@@ -18,6 +18,11 @@ public class WebController {
 		return "login";
 	}
 	
+	@GetMapping("/denied")
+	public String denied() {
+	 return "denied";
+	}
+
 	@GetMapping("/menus")
 	public String menus(Model model) {
 		return "menus";

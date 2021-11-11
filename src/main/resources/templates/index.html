@@ -1,10 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta charset="UTF-8">
 	<title>index</title>
 </head>
+
 <body>
 	<h1>index</h1>
+	<a sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a>
+	<div sec:authorize="isAuthenticated()">
+	<form name="logoutForm" th:action="@{/logout}" method="post">
+		<input type="submit" value="Sign Out" />
+	</form>
+	</div>
 </body>
+
 </html>
