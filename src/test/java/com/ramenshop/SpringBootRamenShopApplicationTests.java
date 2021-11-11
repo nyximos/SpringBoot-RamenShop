@@ -1,4 +1,4 @@
-package com.ramen.RamenShop;
+package com.ramenshop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

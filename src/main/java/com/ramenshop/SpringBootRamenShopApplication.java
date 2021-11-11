@@ -1,4 +1,4 @@
-package com.ramen.RamenShop;
+package com.ramenshop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
