@@ -1,4 +1,4 @@
-package com.ramen.RamenShop.controller;
+package com.ramenshop.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
