@@ -11,11 +11,12 @@
 <body>
 
 	<h2>회원가입</h2>
-	
+
 	<input id="adminId" type="text" placeholder="id">
 	<input id="password" type="password" placeholder="password">
-		
+
 	<button id="reg">등록</button>
+	<button id="del">삭제</button>
 	<p id="result"></p>
 
 
@@ -24,6 +25,11 @@
 			$('#reg').click((event) => {
 				const adminId = $('#adminId').val();
 				const password = $('#password').val();
+				if (adminId == '' || password == '') {
+					alert('아이디와 비밀번호를 입력해주세요');
+					return;
+				}
+
 				const path = '/api/admin/members';
 				const json = JSON.stringify({
 					'adminId': adminId,
@@ -36,12 +42,40 @@
 					type: 'POST',
 					contentType: 'application/json',
 					data: json,
-					beforeSend: function(xhr) {xhr.setRequestHeader(csrfHeader, csrfToken);}
+					beforeSend: function (xhr) {xhr.setRequestHeader(csrfHeader, csrfToken);}
 				}).done((result) => {
 					console.log(result);
-					if(result.result=="ok"){
+					if (result.result == "ok") {
 						alert("등록 성공")
-					}else alert("등록 실패. 이미 있는 아이디입니다")
+					} else alert("등록 실패. 이미 있는 아이디입니다")
+				});
+			});
+			$('#del').click((event) => {
+				const adminId = $('#adminId').val();
+				const password = $('#password').val();
+				if (adminId == '' || password == '') {
+					alert('아이디와 비밀번호를 입력해주세요');
+					return;
+				}
+
+				const path = '/api/admin/members';
+				const json = JSON.stringify({
+					'adminId': adminId,
+					'password': password
+				});
+				const csrfToken =/*[[${_csrf.token}]]*/ null;
+				const csrfHeader =/*[[${_csrf.headerName}]]*/ null;
+				$.ajax({
+					url: path,
+					type: 'DELETE',
+					contentType: 'application/json',
+					data: json,
+					beforeSend: function (xhr) {xhr.setRequestHeader(csrfHeader, csrfToken);}
+				}).done((result) => {
+					console.log(result);
+					if (result.result == "ok") {
+						alert("삭제 성공")
+					} else alert("삭제 실패. 없는 아이디이거나 비밀번호가 틀렸습니다")
 				});
 			});
 		});

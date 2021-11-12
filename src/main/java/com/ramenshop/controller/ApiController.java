@@ -32,19 +32,25 @@ public class ApiController {
 	
 	@PostMapping("/admin/members")
 	public Result regMember(@RequestBody Admin admin ) {
-		System.out.println("컨트롤러안");
 		Optional<Admin> a = adminRepository.findById(admin.getAdminId());
-		if(a.isEmpty()==true){
+		if(a.isEmpty()){
 			admin.setPassword(passwordEncode().encode(admin.getPassword()));
 			adminRepository.save(admin);
-			return new Result("ok");			
+			return new Result("ok");	
 		}
-		return new Result("no");
+		return new Result("ng");
 
 	}
 	@DeleteMapping("/admin/members")
 	public Result delMember(@RequestBody Admin admin ) {
-		return new Result("ok");
+		Optional<Admin> a = adminRepository.findById(admin.getAdminId());
+		if(a.isPresent()){
+			if(passwordEncode().matches(admin.getPassword(), a.get().getPassword())) {
+				adminRepository.deleteById(admin.getAdminId());
+				return new Result("ok");				
+			}
+		}
+		return new Result("ng");
 	}
 	
 	@PostMapping("/admin/edit")
