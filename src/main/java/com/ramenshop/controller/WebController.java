@@ -23,10 +23,10 @@ public class WebController {
 	 return "denied";
 	}
 
-	@GetMapping("/menus")
-	public String menus(Model model) {
-		return "menus";
-	}
+//	@GetMapping("/menus")
+//	public String menus(Model model) {
+//		return "menus";
+//	}
 	
 	@GetMapping("/menus/{menuId}")
 	public String menu(@PathVariable int menuId, Model model) {
