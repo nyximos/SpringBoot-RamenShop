@@ -2,6 +2,7 @@ package com.ramenshop.data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,11 +26,11 @@ public class OrderMenuOption {
 	@Column(nullable=false)
 	private int count=1;
 	
-	@ManyToOne(targetEntity=Option.class)
+	@ManyToOne(fetch = FetchType.LAZY,targetEntity=Option.class)
 	@JoinColumn(name="option_id")
 	private Option option;
 
-	@ManyToOne(targetEntity=OrderMenu.class)
+	@ManyToOne(fetch = FetchType.LAZY,targetEntity=OrderMenu.class)
 	@JoinColumn(name="order_menu_id")
 	private OrderMenu orderMenu;
 	

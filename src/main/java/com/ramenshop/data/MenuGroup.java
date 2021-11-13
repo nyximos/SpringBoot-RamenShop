@@ -27,7 +27,7 @@ public class MenuGroup {
 	@Column(nullable=false,length=3)
 	private String name;
 	
-	@OneToMany(mappedBy="menuGroup") // Menu클래스??의 menu필드??에 매핑을 해준다는 뜻
+	@OneToMany(mappedBy="menuGroup") // Menu클래스의 menuGroup필드에 매핑을 해준다는 뜻
 	private List<Menu> menus = new ArrayList<>();
 	
 	@OneToMany(mappedBy="menuGroup")

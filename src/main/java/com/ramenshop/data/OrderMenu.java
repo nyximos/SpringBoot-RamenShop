@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,11 +33,11 @@ public class OrderMenu {
 	@Column(nullable = false)
 	private int count=1;
 	
-	@ManyToOne(targetEntity=Order.class)
+	@ManyToOne(fetch = FetchType.LAZY,targetEntity=Order.class)
 	@JoinColumn(name="order_id")
 	private Order order;
 	
-	@ManyToOne(targetEntity=Menu.class)
+	@ManyToOne(fetch = FetchType.LAZY,targetEntity=Menu.class)
 	@JoinColumn(name="menu_id")
 	private Menu menu;
 	

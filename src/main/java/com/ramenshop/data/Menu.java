@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,7 +45,7 @@ public class Menu {
 	private BooleanType isSale=BooleanType.Y;
 	
 	
-	@ManyToOne(targetEntity=MenuGroup.class)
+	@ManyToOne(fetch = FetchType.LAZY,targetEntity=MenuGroup.class)
 	@JoinColumn(name="menu_group_id")
 	private MenuGroup menuGroup;
 	

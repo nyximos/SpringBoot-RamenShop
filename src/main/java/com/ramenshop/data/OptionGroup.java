@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,7 +30,7 @@ public class OptionGroup {
 	@Column(nullable=false, length=2)
 	private String name;
 	
-	@ManyToOne(targetEntity=MenuGroup.class)
+	@ManyToOne(fetch = FetchType.LAZY,targetEntity=MenuGroup.class)
 	@JoinColumn(name="menu_group_id")
 	private MenuGroup menuGroup;
 	
