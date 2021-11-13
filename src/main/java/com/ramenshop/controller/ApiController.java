@@ -21,6 +21,7 @@ import com.ramenshop.repository.AdminRepository;
 @RestController
 @RequestMapping("/api")
 public class ApiController {
+	//머지용
 	@Autowired
 	AdminRepository adminRepository;
 	
