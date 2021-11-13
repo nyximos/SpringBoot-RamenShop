@@ -8,6 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class WebController {
 	
+	@GetMapping("test")
+	public String test() {
+		return "index";
+	}
 	@GetMapping("/")
 	public String index() {
 		return "index";
