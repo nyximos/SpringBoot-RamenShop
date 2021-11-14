@@ -78,6 +78,7 @@ public class Option {
 
 	public void setOptionGroup(OptionGroup optionGroup) {
 		this.optionGroup = optionGroup;
+		optionGroup.getOptions().add(this);
 	}
 
 	public List<OrderMenuOption> getOrderMenuOptions() {

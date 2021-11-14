@@ -55,6 +55,7 @@ public class OptionGroup {
 
 	public void setMenuGroup(MenuGroup menuGroup) {
 		this.menuGroup = menuGroup;
+		menuGroup.getOptionGroups().add(this);
 	}
 
 	public List<Option> getOptions() {

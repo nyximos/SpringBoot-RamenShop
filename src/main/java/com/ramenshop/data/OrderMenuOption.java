@@ -52,6 +52,7 @@ public class OrderMenuOption {
 
 	public void setOption(Option option) {
 		this.option = option;
+		option.getOrderMenuOptions().add(this);
 	}
 
 	public OrderMenu getOrderMenu() {
@@ -60,6 +61,7 @@ public class OrderMenuOption {
 
 	public void setOrderMenu(OrderMenu orderMenu) {
 		this.orderMenu = orderMenu;
+		orderMenu.getOrderMenuOptions().add(this);
 	}
 	
 	

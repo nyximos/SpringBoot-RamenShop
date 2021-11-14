@@ -71,6 +71,7 @@ public class OrderMenu {
 
 	public void setOrder(Order order) {
 		this.order = order;
+		order.getOrderMenus().add(this);
 	}
 
 	public Menu getMenu() {
@@ -79,6 +80,7 @@ public class OrderMenu {
 
 	public void setMenu(Menu menu) {
 		this.menu = menu;
+		menu.getOrderMenus().add(this);
 	}
 
 	public List<OrderMenuOption> getOrderMenuOptions() {
