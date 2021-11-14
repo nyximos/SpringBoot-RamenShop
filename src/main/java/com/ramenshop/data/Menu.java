@@ -37,7 +37,7 @@ public class Menu {
 	private String imgUrl;
 	
 	@Column(nullable = false)
-	private String dscription;
+	private String description;
 	
 	@Column(name = "is_sale",nullable = false)
 	private BooleanType isSale=BooleanType.Y;
@@ -72,6 +72,14 @@ public class Menu {
 		return price;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
@@ -84,13 +92,7 @@ public class Menu {
 		this.imgUrl = imgUrl;
 	}
 
-	public String getDscription() {
-		return dscription;
-	}
-
-	public void setDscription(String dscription) {
-		this.dscription = dscription;
-	}
+	
 
 	public BooleanType getIsSale() {
 		return isSale;

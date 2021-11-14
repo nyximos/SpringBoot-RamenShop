@@ -53,10 +53,6 @@ public class WebController {
 		return "members";
 	}
 	
-	@GetMapping("/admin/edit")
-	public String edit(Model model) {
-		return "edit";
-	}
 	
 	@GetMapping("/admin/sales")
 	public String sales(Model model) {
