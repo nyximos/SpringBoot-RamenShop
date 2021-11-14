@@ -16,12 +16,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
-@Getter @Setter
 @Table(name="orders")
 public class Order {
 	
@@ -40,6 +36,39 @@ public class Order {
 	
 	@OneToMany(mappedBy="order") // OrderMenu의 order에 매핑을 해준다는 뜻
 	private List<OrderMenu> orderMenus = new ArrayList<>();
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public LocalDateTime getOrdertime() {
+		return ordertime;
+	}
+
+	public void setOrdertime(LocalDateTime ordertime) {
+		this.ordertime = ordertime;
+	}
+
+	public List<OrderMenu> getOrderMenus() {
+		return orderMenus;
+	}
+
+	public void setOrderMenus(List<OrderMenu> orderMenus) {
+		this.orderMenus = orderMenus;
+	}
+	
 	
 	
 }

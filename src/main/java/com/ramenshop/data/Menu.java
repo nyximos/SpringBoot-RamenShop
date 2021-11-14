@@ -16,11 +16,8 @@ import javax.persistence.Table;
 
 import com.ramenshop.data.enums.BooleanType;
 
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-@Getter @Setter
 @Table(name="menu")
 public class Menu {
 
@@ -52,6 +49,104 @@ public class Menu {
 	@OneToMany(mappedBy="menu")
 	private List<OrderMenu> orderMenus = new ArrayList<>();
 	
+	
+	
+	public Long getId() {
+		return id;
+	}
+
+
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+
+	public int getPrice() {
+		return price;
+	}
+
+
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
+
+
+
+	public String getDscription() {
+		return dscription;
+	}
+
+
+
+	public void setDscription(String dscription) {
+		this.dscription = dscription;
+	}
+
+
+
+	public BooleanType getIsSale() {
+		return isSale;
+	}
+
+
+
+	public void setIsSale(BooleanType isSale) {
+		this.isSale = isSale;
+	}
+
+
+
+	public MenuGroup getMenuGroup() {
+		return menuGroup;
+	}
+
+
+
+	public void setMenuGroup(MenuGroup menuGroup) {
+		this.menuGroup = menuGroup;
+	}
+
+
+
+	public List<OrderMenu> getOrderMenus() {
+		return orderMenus;
+	}
+
+
+
+	public void setOrderMenus(List<OrderMenu> orderMenus) {
+		this.orderMenus = orderMenus;
+	}
+
+
+
 	Menu(){}
 
 }

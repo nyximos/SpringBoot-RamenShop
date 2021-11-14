@@ -10,11 +10,11 @@ import com.ramenshop.data.Menu;
 
 @Controller
 public class MenuWebController {
-	@GetMapping("/menus")
-	public String menusList(Model model) {
-		
-		List<Menu> menus = menuService.findMenus();
-		model.addAttribute("menus", menus);
-		return "menus";
-	}
+//	@GetMapping("/menus")
+//	public String menusList(Model model) {
+//		
+//		List<Menu> menus = menuService.findMenus();
+//		model.addAttribute("menus", menus);
+//		return "menus";
+//	}
 }

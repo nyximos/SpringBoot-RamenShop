@@ -10,11 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
-@Getter @Setter
 @Table(name="order_menu_option")
 public class OrderMenuOption {
 	
@@ -33,5 +29,39 @@ public class OrderMenuOption {
 	@ManyToOne(fetch = FetchType.LAZY,targetEntity=OrderMenu.class)
 	@JoinColumn(name="order_menu_id")
 	private OrderMenu orderMenu;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	public Option getOption() {
+		return option;
+	}
+
+	public void setOption(Option option) {
+		this.option = option;
+	}
+
+	public OrderMenu getOrderMenu() {
+		return orderMenu;
+	}
+
+	public void setOrderMenu(OrderMenu orderMenu) {
+		this.orderMenu = orderMenu;
+	}
+	
+	
 	
 }

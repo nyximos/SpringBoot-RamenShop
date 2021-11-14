@@ -14,11 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-@Getter @Setter
 @Table(name="options")
 public class Option {
 	
@@ -42,4 +39,55 @@ public class Option {
 	
 	@OneToMany(mappedBy="option")
 	private List<OrderMenuOption> orderMenuOptions = new ArrayList<>();
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getMax() {
+		return max;
+	}
+
+	public void setMax(int max) {
+		this.max = max;
+	}
+
+	public OptionGroup getOptionGroup() {
+		return optionGroup;
+	}
+
+	public void setOptionGroup(OptionGroup optionGroup) {
+		this.optionGroup = optionGroup;
+	}
+
+	public List<OrderMenuOption> getOrderMenuOptions() {
+		return orderMenuOptions;
+	}
+
+	public void setOrderMenuOptions(List<OrderMenuOption> orderMenuOptions) {
+		this.orderMenuOptions = orderMenuOptions;
+	}
+	
+	
+
 }

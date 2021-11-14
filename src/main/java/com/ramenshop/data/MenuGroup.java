@@ -11,11 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
-@Getter @Setter
 @Table(name="menu_group")
 public class MenuGroup {
 	
@@ -32,4 +29,38 @@ public class MenuGroup {
 	
 	@OneToMany(mappedBy="menuGroup")
 	private List<OptionGroup> optionGroups = new ArrayList<>();
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public List<Menu> getMenus() {
+		return menus;
+	}
+
+	public void setMenus(List<Menu> menus) {
+		this.menus = menus;
+	}
+
+	public List<OptionGroup> getOptionGroups() {
+		return optionGroups;
+	}
+
+	public void setOptionGroups(List<OptionGroup> optionGroups) {
+		this.optionGroups = optionGroups;
+	}
+	
+	
 }

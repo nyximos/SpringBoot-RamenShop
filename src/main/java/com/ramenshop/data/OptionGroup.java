@@ -14,11 +14,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Entity
-@Getter @Setter
 @Table(name="option_group")
 public class OptionGroup {
 
@@ -36,5 +32,39 @@ public class OptionGroup {
 	
 	@OneToMany(mappedBy="optionGroup")
 	private List<Option> options = new ArrayList<>();
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public MenuGroup getMenuGroup() {
+		return menuGroup;
+	}
+
+	public void setMenuGroup(MenuGroup menuGroup) {
+		this.menuGroup = menuGroup;
+	}
+
+	public List<Option> getOptions() {
+		return options;
+	}
+
+	public void setOptions(List<Option> options) {
+		this.options = options;
+	}
+	
+	
 	
 }
