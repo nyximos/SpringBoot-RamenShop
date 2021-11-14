@@ -62,8 +62,13 @@ public class OptionGroup {
 		return options;
 	}
 
-	public void setOptions(List<Option> options) {
-		this.options = options;
+//	public void setOptions(List<Option> options) {
+//		this.options = options;
+//	}
+	
+	public void addOption(Option option) {
+		this.options.add(option);
+		option.setOptionGroup(this);
 	}
 	
 	

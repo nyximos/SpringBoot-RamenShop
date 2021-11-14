@@ -113,10 +113,14 @@ public class Menu {
 		return orderMenus;
 	}
 
-	public void setOrderMenus(List<OrderMenu> orderMenus) {
-		this.orderMenus = orderMenus;
-	}
+//	public void setOrderMenus(List<OrderMenu> orderMenus) {
+//		this.orderMenus = orderMenus;
+//	}
 
+	public void addOrderMenu(OrderMenu orderMenu) {
+		this.orderMenus.add(orderMenu);
+		orderMenu.setMenu(this);
+	}
 
 
 	Menu(){}
