@@ -9,29 +9,64 @@
 </head>
 
 <body>
+	<h2>메뉴조회</h2>
 
-	<h2>메뉴조회/추가/수정/삭제</h2>
+	<table border="1">
+		<thead>
+			<tr>
+				<td>메뉴명</td>
+				<td>가격</td>
+				<td>설명</td>
+				<td>카테고리</td>
+				<td></td>
+				<td></td>
+		</thead>
+		<tbody>
+			<tr th:each="m : ${menus}">
+				<td th:text="${m.name}"></td>
+				<td th:text="${m.price}"></td>
+				<td th:text="${m.description}"></td>
+				<td th:text="${m.menuGroup.name}"></td>
+				<td><button>수정</button></td>
+				<td><button id="del" th:class="${m.id}">삭제</button></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<h2>메뉴추가</h2>
 
 	<input id="name" type="text" placeholder="메뉴명"><br>
 	<input id="price" type="text" placeholder="가격"><br>
 	<input id="image" type="text" placeholder="이미지경로"><br>
-	이미지첨부는 따로 해야하나? 조회되는 화면누르면 사진추가하는 형식?<br>
-	<input id="description" type="text" placeholder="메뉴설명"><br>
-	<select id="status"  placeholder="판매여부"><br>
+	<input id="description" type="text" placeholder="메뉴설명"><br>	
+	<select id="status" placeholder="판매여부"><br>
 		<option value="0">yes</option>
 		<option value="1">no</option>
-	</select>
-	<select id="menuGroupId" placeholder="분류(메뉴그룹아이디)">
-		<option value="1">밥</option>
-		<option value="2">면</option>
-		<option value="3">사이드</option>
-		<option value="4">음료</option>
-		<option value="5">타임리프로 불러야할듯</option>
-	</select><br><br><br>
-
+	</select>	
+	<select id="menuGroupId">
+		<span th:each="mg : ${menugroups}">
+			<option th:text="${mg.name}" th:value="${mg.id}"></option>
+		</span>
+	</select><br><br>
 	<button id="reg">등록</button><br>
-	<button id="del">삭제</button>
-	<p id="result"></p>
+	<br>
+	
+	<h2>메뉴수정</h2>
+	
+	<select id="name">
+		<span th:each="m : ${menus}">
+			<option th:text="${m.name}" th:value="${m.name}">밥</option>
+		</span>
+	</select>	
+	<br>	
+	<input id="price" type="text" placeholder="가격"><br>
+	<input id="image" type="text" placeholder="이미지경로"><br>
+	<input id="description" type="text" placeholder="메뉴설명"><br>	
+	<select id="status" placeholder="판매여부"><br>
+		<option value="0">yes</option>
+		<option value="1">no</option>
+	</select><br><br>	
+	<button id="mod">수정</button>
 
 
 	<script th:inline="javascript">
@@ -43,10 +78,10 @@
 				const description = $('#description').val();
 				const isSale = $('#status').val();
 				const menuGroup = {
-				'id': $('#menuGroupId').val(),
-					
+					'id': $('#menuGroupId').val(),
+
 				}
-				if (name == '' || price == ''|| imgUrl == ''|| description == '') {
+				if (name == '' || price == '' || imgUrl == '' || description == '') {
 					alert('입력해주세요');
 					return;
 				}
@@ -72,21 +107,22 @@
 					console.log(result);
 					if (result.result == "ok") {
 						alert("등록 성공")
+						window.location.reload();
 					} else alert("등록 실패. 이미 있는 아이디입니다")
 				});
 			});
 			$('#del').click((event) => {
-				const adminId = $('#adminId').val();
-				const password = $('#password').val();
-				if (adminId == '' || password == '') {
-					alert('아이디와 비밀번호를 입력해주세요');
+                alert($(this).attr('class'));
+				const name = $('#name').val();
+				alert(test)
+				if (name == '' || price == '' || imgUrl == '' || description == '') {
+					alert('입력해주세요');
 					return;
 				}
 
-				const path = '/api/admin/members';
+				const path = '/api/admin/edit';
 				const json = JSON.stringify({
-					'adminId': adminId,
-					'password': password
+					'name': name
 				});
 				const csrfToken =/*[[${_csrf.token}]]*/ null;
 				const csrfHeader =/*[[${_csrf.headerName}]]*/ null;
@@ -99,8 +135,9 @@
 				}).done((result) => {
 					console.log(result);
 					if (result.result == "ok") {
-						alert("삭제 성공")
-					} else alert("삭제 실패. 없는 아이디이거나 비밀번호가 틀렸습니다")
+						alert("등록 성공")
+						window.location.reload();
+					} else alert("등록 실패. 이미 있는 아이디입니다")
 				});
 			});
 		});
