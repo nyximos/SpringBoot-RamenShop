@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.ramenshop.data.Menu;
 
 @Repository
-public interface MenuRepository extends JpaRepository<Menu, Integer> {
+public interface MenuRepository extends JpaRepository<Menu, Long> {
 
 }

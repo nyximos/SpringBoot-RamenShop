@@ -72,11 +72,12 @@ public class WebController {
 		return "members";
 	}
 	
-	
+	/*
 	@GetMapping("/admin/sales")
 	public String sales(Model model) {
 		String root = request.getContextPath();
 		return "sales";
 	}
+	*/
 	
 }
