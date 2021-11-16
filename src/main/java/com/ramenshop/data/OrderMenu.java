@@ -87,8 +87,13 @@ public class OrderMenu {
 		return orderMenuOptions;
 	}
 
-	public void setOrderMenuOptions(List<OrderMenuOption> orderMenuOptions) {
-		this.orderMenuOptions = orderMenuOptions;
+//	public void setOrderMenuOptions(List<OrderMenuOption> orderMenuOptions) {
+//		this.orderMenuOptions = orderMenuOptions;
+//	}
+	
+	public void addOrderMenuOption(OrderMenuOption orderMenuOption) {
+		this.orderMenuOptions.add(orderMenuOption);
+		orderMenuOption.setOrderMenu(this);
 	}
 	
 	

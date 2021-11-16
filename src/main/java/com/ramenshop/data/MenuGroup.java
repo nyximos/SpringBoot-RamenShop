@@ -50,16 +50,26 @@ public class MenuGroup {
 		return menus;
 	}
 
-	public void setMenus(List<Menu> menus) {
-		this.menus = menus;
+//	public void setMenus(List<Menu> menus) {
+//		this.menus = menus;
+//	}
+	
+	public void addMenus(Menu menu) {
+		this.menus.add(menu);
+		menu.setMenuGroup(this);
 	}
 
 	public List<OptionGroup> getOptionGroups() {
 		return optionGroups;
 	}
 
-	public void setOptionGroups(List<OptionGroup> optionGroups) {
-		this.optionGroups = optionGroups;
+//	public void setOptionGroups(List<OptionGroup> optionGroups) {
+//		this.optionGroups = optionGroups;
+//	}
+	
+	public void addOptionGroup(OptionGroup optionGroup) {
+		this.optionGroups.add(optionGroup);
+		optionGroup.setMenuGroup(this);
 	}
 	
 	
