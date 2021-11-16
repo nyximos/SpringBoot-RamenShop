@@ -6,5 +6,25 @@
 </head>
 <body>
 	<h1>menus</h1>
+	<table>
+	<thead>
+	<tr>
+		<th>id</th>
+		<th>name</th>
+		<th>price</th>
+		<th>img</th>
+		<th>dis</th>
+	</tr>
+	</thead>
+	<tbody>
+		<tr th:each="menu: ${menus}">
+			<td th:text="${menu.getId()}"></td>
+			<td th:text="${menu.getName()}"></td>
+			<td th:text="${menu.getPrice()}"></td>
+			<td><img th:src="@{/imgs/}+${menu.getImgUrl()}"></td>
+			<td th:text="${menu.getDiscription()}"></td>
+		</tr>
+	</tbody>
+</table>
 </body>
 </html>
