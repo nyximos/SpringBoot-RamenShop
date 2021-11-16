@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,13 +15,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import com.ramenshop.data.enums.BooleanType;
 
 
 
 @Entity
+@EntityListeners(AuditingEntityListener.class) /* JPA에게 해당 Entity는 Auditiong 기능을 사용함을 알립니다. */
 @Table(name="menu")
 public class Menu {
+	
 
 	@Id
 	@Column(name="menu_id")
@@ -123,6 +128,67 @@ public class Menu {
 	}
 
 
-	Menu(){}
+	public Menu(){}
+	
+	Menu(Long id, String name, int price, String imgUrl, String discription, Long menuGroupId){
+		this.id = id;
+		this.name = name;
+		this.price = price;
+		this.imgUrl = imgUrl;
+		this.discription = discription;
+		this.menuGroup.setId(menuGroupId);
 
+	}
+
+	/*
+	Menu(MenuBuilder builder){
+		this.id = builder.id;
+		this.name = builder.name(name)
+		
+	}
+	*/
 }
+
+/*
+class MenuBuilder{
+	private Long id;
+	private String name;
+	private int price;
+	private String imgUrl;
+	private String discription;
+	private Long menuGroupId;
+	
+	public MenuBuilder(Long id) {
+		this.id = id;
+	}
+	
+	public MenuBuilder name(String name) {
+		this.name = name;
+		return this;
+	}
+	
+	public MenuBuilder setPrice(int price) {
+		this.price = price;
+		return this;
+	}
+	
+	public MenuBuilder setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+		return this;
+	}
+	
+	public MenuBuilder setDiscription(String discription) {
+		this.discription = discription;
+		return this;
+	}
+	
+	public MenuBuilder setMenuGroupId(Long menuGroupId) {
+		this.menuGroupId = menuGroupId;
+		return this;
+	}
+	
+	public Menu build() {
+		return new Menu(this);
+	}
+	}
+	*/

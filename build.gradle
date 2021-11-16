@@ -19,6 +19,7 @@ repositories {
 }
 
 dependencies {
+	runtimeOnly 'org.webjars:bootstrap:4.5.0'
 	implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.9.9'
 	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
 	implementation 'org.springframework.boot:spring-boot-starter-security'

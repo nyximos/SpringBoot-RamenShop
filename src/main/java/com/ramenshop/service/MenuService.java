@@ -1,5 +1,6 @@
 package com.ramenshop.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.ramenshop.data.Menu;
+import com.ramenshop.data.MenuGroup;
+import com.ramenshop.dto.MenuDto;
 import com.ramenshop.repository.MenuRepository;
 
 @Service
@@ -15,9 +18,29 @@ public class MenuService {
 	@Autowired
 	public MenuRepository menuRepository;
 	
-	public void saveMenu(Menu menu) {
-		menuRepository.save(menu);
+	public MenuService(MenuRepository menuRepository) {
+		this.menuRepository = menuRepository;
 	}
+	
+	public Long saveMenu(MenuDto menuDto) {
+		return menuRepository.save(menuDto.toEntity()).getId();
+	}
+	
+	public List<MenuDto> getMenuList(){
+		List<Menu> menuList = menuRepository.findAll();
+		List<MenuDto> menuDtoList = new ArrayList<>();
+		
+//		(Long id, String name, int price, String imgUrl, String discription, Long menuGroupId)
+		for(Menu menu : menuList) {
+			MenuDto menuDto = new MenuDto(menu.getId(),menu.getName(), menu.getPrice(),menu.getImgUrl(),menu.getDiscription(), menu.getMenuGroup().getId());
+			menuDtoList.add(menuDto);
+		}
+		return menuDtoList;
+	}
+	
+//	public void saveMenu(Menu menu) {
+//		menuRepository.save(menu);
+//	}
 	
 	public List<Menu> findMenus(){
 		return menuRepository.findAll();
