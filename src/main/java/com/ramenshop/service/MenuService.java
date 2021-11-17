@@ -21,23 +21,6 @@ public class MenuService {
 		this.menuRepository = menuRepository;
 	}
 	
-	/*
-	public Long saveMenu(MenuDto menuDto) {
-		return menuRepository.save(menuDto.toEntity()).getId();
-	}
-	
-	public List<MenuDto> getMenuList(){
-		List<Menu> menuList = menuRepository.findAll();
-		List<MenuDto> menuDtoList = new ArrayList<>();
-		
-//		(Long id, String name, int price, String imgUrl, String discription, Long menuGroupId)
-		for(Menu menu : menuList) {
-			MenuDto menuDto = new MenuDto(menu.getId(),menu.getName(), menu.getPrice(),menu.getImgUrl(),menu.getDiscription(), menu.getMenuGroup().getId());
-			menuDtoList.add(menuDto);
-		}
-		return menuDtoList;
-	}
-	*/
 	
 	public void saveMenu(Menu menu) {
 		menuRepository.save(menu);

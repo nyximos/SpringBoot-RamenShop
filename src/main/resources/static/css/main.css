@@ -8,6 +8,7 @@
 img {
   width: 150px;
   height: 150px;
+  vertical-align: middle;
 }
 .menu-object {
 	cursor: pointer;
@@ -17,7 +18,7 @@ img {
 	background-color: floralwhite;
 }
 
-.table{
+.content{
 	max-width: 1100px;
 	width:100%;
 	box-sizing: border-box;
@@ -25,9 +26,36 @@ img {
 	left: auto;
 	right: auto;
 }
+
+.content{
+	width:70%;
+	margin-right: 30px;
+}
+
+
+
+th{
+	height:50px;
+	background-color: sandybrown;
+	margin-bottom: 10px;
+}
+
+td{
+	vertical-align: middle;
+	padding : 20px;
+}
+
+td > div{
+	display:inline-block;
+	margin:0 auto;
+
+
+}
+
+
 button{
 	box-sizing: border-box;
-	position: sticky;
+	position: fixed;
 	clear:both;
 }
 
@@ -35,5 +63,14 @@ body{
 	font-family: 'IBMPlexSansKR-Regular';
 }
 
+.quickmenu { 
+	position: absolute;
+	margin-top:100px;
+	right:-170px;
+	width:250px;
+	height:250px;
+	padding:50px;
 
 
+
+}

@@ -12,7 +12,7 @@
 <body>
 	<header th:insert="header.html"></header>
 	<div class="container">
-		<div class="table">
+		<div class="content">
 			<table>
 				<thead class="thead-light">
 					<tr class="text-center">
@@ -26,37 +26,43 @@
 				<tbody>
 					<tr class="text-center menu-object" th:each="menu : ${menus}">
 						<a th:href="@{/menus/{menuId}(menuId=${menu.getId()})}">
-							<th scope="row" width="20%">
-								<span><img th:src="@{/imgs/}+${menu.imgName}"></span>
-							</th>
-							<th scope="row" width="10%">
-								<span th:text="${menu.id}"></span>
-							</th>
-							<th scope="row" width="20%">
-								<span th:text="${menu.name}"></span>
-							</th>
-							<th scope="row" width="10%">
-								<span th:text="${menu.price}"></span>
-							</th>
-							<th scope="row">
-								<span th:text="${menu.discription}"></span>
-							</th>
+							<td scope="row" width="20%">
+								<div><img th:src="@{/imgs/}+${menu.imgName}"></div>
+							</td>
+							<td scope="row" width="10%">
+								<div th:text="${menu.id}"></div>
+							</td>
+							<td scope="row" width="20%">
+								<div th:text="${menu.name}"></div>
+							</td>
+							<td scope="row" width="10%">
+								<div th:text="${menu.price}"></div>
+							</td>
+							<td scope="row" width="30%">
+								<div th:text="${menu.discription}"></div>
+							</td>
 						</a>
 					</tr>
 				</tbody>
 			</table>
-
-			<div class="row floating">
-				<div class="col-auto mr-auto"></div>
-				<div class="col-auto">
-					<a class="btn btn-outline-warning" th:href="@{/post}" role="button">메뉴등록</a>
+			<div class="row quickmenu">
+				<div class="menu-post-button">
+					<div class="col-auto mr-auto"></div>
+					<div class="col-auto">
+						<a class="btn btn-outline-warning" th:href="@{/post}" role="button">메뉴등록</a>
+					</div>
 				</div>
 			</div>
-			
 		</div>
 	</div>
 	<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+	<script>
+		$(window).scroll(function () {  //스크롤이 움직일때마다 이벤트 발생 
+			var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+			$('.quickmenu').stop().animate({top: position + "px"}, 1000); //해당 오브젝트 위치값 재설정
+		});
+	</script>
 </body>
 
 </html>

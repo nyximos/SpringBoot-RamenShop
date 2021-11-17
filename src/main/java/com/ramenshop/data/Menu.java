@@ -153,58 +153,7 @@ public class Menu {
 		this.discription = discription;
 		this.menuGroup = menuGroupId;
 		this.imgName = imgName;
-
 	}
 
-	/*
-	Menu(MenuBuilder builder){
-		this.id = builder.id;
-		this.name = builder.name(name)
-		
-	}
-	*/
+
 }
-
-/*
-class MenuBuilder{
-	private Long id;
-	private String name;
-	private int price;
-	private String imgUrl;
-	private String discription;
-	private Long menuGroupId;
-	
-	public MenuBuilder(Long id) {
-		this.id = id;
-	}
-	
-	public MenuBuilder name(String name) {
-		this.name = name;
-		return this;
-	}
-	
-	public MenuBuilder setPrice(int price) {
-		this.price = price;
-		return this;
-	}
-	
-	public MenuBuilder setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
-		return this;
-	}
-	
-	public MenuBuilder setDiscription(String discription) {
-		this.discription = discription;
-		return this;
-	}
-	
-	public MenuBuilder setMenuGroupId(Long menuGroupId) {
-		this.menuGroupId = menuGroupId;
-		return this;
-	}
-	
-	public Menu build() {
-		return new Menu(this);
-	}
-	}
-	*/

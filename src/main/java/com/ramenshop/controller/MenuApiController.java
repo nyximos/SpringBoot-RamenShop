@@ -30,11 +30,10 @@ public class MenuApiController {
     		@RequestParam(name="imgFile") MultipartFile imgFile,
     		@RequestParam(name="menuGroupId") String menuGroupId,
     		HttpServletRequest request,
-    		HttpServletResponse response,
-    		ModelAndView mav
+    		HttpServletResponse response
     		) {
     	
-    	//String name, int price, String discription, String imgUrl, Long menuGroupId
+    	//String name, int price, String discription, String imgUrl, Menugroup menuGroupId
     	
     	
         try { // 이미지 경로를 DB에 셋팅
@@ -48,11 +47,12 @@ public class MenuApiController {
             String imgName = imgFile.getOriginalFilename();
             
             Menu menu = new Menu(name, price,discription, menuGroup, imgName);
+            
+            
             menu.setImgUrl(filePath);
             menuService.saveMenu(menu);
             response.sendRedirect("list");
             
-
             return "등록성공";
          } catch(Exception e) {
             e.printStackTrace();
