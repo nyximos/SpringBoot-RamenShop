@@ -10,7 +10,7 @@
 <body>
 	<header th:insert="header.html"></header>
 	<div class="container">
-		<form action="/post" method="post">
+		<form th:action="@{/post}" method="post" enctype="multipart/form-data">
 			<div class="form-group row">
 				<label for="inputTitle" class="col-sm-2 col-form-label"><strong>메뉴명</strong></label>
 				<div class="col-sm-10">
@@ -32,18 +32,18 @@
 			<div class="form-group row">
 				<label for="inputContent" class="col-sm-2 col-form-label"><strong>이미지</strong></label>
 				<div class="col-sm-10">
-					<textarea type="text" name="imgUrl" class="form-control" id="inputImgUrl"></textarea>
+					<input type="file" id="imgFile" name="imgFile">
 				</div>
 			</div>
 			<div class="form-group row">
 				<label for="inputContent" class="col-sm-2 col-form-label"><strong>메뉴그룹</strong></label>
 				<div class="col-sm-10">
-					<select name="menuGroup" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="selectMenuGroup">
+					<select th:name="menuGroupId" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" id="selectMenuGroup">
 						<option selected>Open this select menu</option>
-						<option value="1">면</option>
-						<option value="2">밥</option>
-						<option value="3">사이드</option>
-						<option value="4">음료</option>
+						<option th:value="1">면</option>
+						<option th:value="2">밥</option>
+						<option th:value="3">사이드</option>
+						<option th:value="4">음료</option>
 					</select>
 				</div>
 

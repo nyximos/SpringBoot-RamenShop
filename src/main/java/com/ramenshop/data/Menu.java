@@ -41,6 +41,9 @@ public class Menu {
 	@Column(name = "img_url",nullable = false)
 	private String imgUrl;
 	
+	@Column(name = "img_name", nullable = false)
+	private String imgName;
+	
 	@Column(nullable = false)
 	private String discription;
 	
@@ -88,6 +91,20 @@ public class Menu {
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
+	
+	
+
+	public String getImgName() {
+		return imgName;
+	}
+
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
+	}
+
+	public void setOrderMenus(List<OrderMenu> orderMenus) {
+		this.orderMenus = orderMenus;
+	}
 
 	public String getDiscription() {
 		return discription;
@@ -130,13 +147,12 @@ public class Menu {
 
 	public Menu(){}
 	
-	Menu(Long id, String name, int price, String imgUrl, String discription, Long menuGroupId){
-		this.id = id;
+	public Menu(String name, int price, String discription, MenuGroup menuGroupId, String imgName){
 		this.name = name;
 		this.price = price;
-		this.imgUrl = imgUrl;
 		this.discription = discription;
-		this.menuGroup.setId(menuGroupId);
+		this.menuGroup = menuGroupId;
+		this.imgName = imgName;
 
 	}
 

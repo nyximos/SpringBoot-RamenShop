@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.ramenshop.data.Menu;
-import com.ramenshop.dto.MenuDto;
 import com.ramenshop.service.MenuService;
 
 @Controller
@@ -25,8 +24,8 @@ public class MenuWebController {
 	@GetMapping("/menus")
 	public String menusList(Model model) {
 		
-		List<MenuDto> menus = menuService.getMenuList();
-		model.addAttribute("menus", menus);
+//		List<MenuDto> menus = menuService.getMenuList();
+//		model.addAttribute("menus", menus);
 		return "menus";
 	}
 	
@@ -42,10 +41,6 @@ public class MenuWebController {
         return "post";
     }
     
-    @PostMapping("/post")
-    public String write(MenuDto menuDto) {
-    	menuService.saveMenu(menuDto);
-    	return "redirect:/list";
-    }
+
 	
 }

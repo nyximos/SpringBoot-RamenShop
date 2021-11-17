@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.ramenshop.data.Menu;
 import com.ramenshop.data.MenuGroup;
-import com.ramenshop.dto.MenuDto;
 import com.ramenshop.repository.MenuRepository;
 
 @Service
@@ -22,6 +21,7 @@ public class MenuService {
 		this.menuRepository = menuRepository;
 	}
 	
+	/*
 	public Long saveMenu(MenuDto menuDto) {
 		return menuRepository.save(menuDto.toEntity()).getId();
 	}
@@ -37,10 +37,11 @@ public class MenuService {
 		}
 		return menuDtoList;
 	}
+	*/
 	
-//	public void saveMenu(Menu menu) {
-//		menuRepository.save(menu);
-//	}
+	public void saveMenu(Menu menu) {
+		menuRepository.save(menu);
+	}
 	
 	public List<Menu> findMenus(){
 		return menuRepository.findAll();

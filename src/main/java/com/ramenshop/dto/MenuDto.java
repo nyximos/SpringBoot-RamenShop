@@ -2,7 +2,7 @@ package com.ramenshop.dto;
 
 import com.ramenshop.data.Menu;
 import com.ramenshop.data.MenuGroup;
-
+/*
 public class MenuDto {
 
 	private Long id;
@@ -33,3 +33,4 @@ public class MenuDto {
 
 	}
 }
+*/
