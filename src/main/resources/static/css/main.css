@@ -1,5 +1,39 @@
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 img {
   width: 150px;
   height: 150px;
-
 }
+.menu-object {
+	cursor: pointer;
+}
+
+.menu-object:hover{
+	background-color: floralwhite;
+}
+
+.table{
+	max-width: 1100px;
+	width:100%;
+	box-sizing: border-box;
+	position: absolute;
+	left: auto;
+	right: auto;
+}
+button{
+	box-sizing: border-box;
+	position: sticky;
+	clear:both;
+}
+
+body{
+	font-family: 'IBMPlexSansKR-Regular';
+}
+
+
+
