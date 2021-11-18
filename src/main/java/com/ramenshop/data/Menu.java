@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,13 +15,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 import com.ramenshop.data.enums.BooleanType;
 
 
 
 @Entity
+@EntityListeners(AuditingEntityListener.class) /* JPA에게 해당 Entity는 Auditiong 기능을 사용함을 알립니다. */
 @Table(name="menu")
 public class Menu {
+	
 
 	@Id
 	@Column(name="menu_id")
@@ -35,6 +40,9 @@ public class Menu {
 	
 	@Column(name = "img_url",nullable = false)
 	private String imgUrl;
+	
+	@Column(name = "img_name", nullable = false)
+	private String imgName;
 	
 	@Column(nullable = false)
 	private String discription;
@@ -91,6 +99,16 @@ public class Menu {
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
 	}
+	
+	
+
+	public String getImgName() {
+		return imgName;
+	}
+
+	public void setImgName(String imgName) {
+		this.imgName = imgName;
+	}
 
 	
 
@@ -121,6 +139,16 @@ public class Menu {
 
 
 
-	Menu(){}
+	public Menu(){}
+	
+	public Menu(String name, int price, String discription, MenuGroup menuGroupId, String imgName){
+		this.name = name;
+		this.price = price;
+		this.discription = discription;
+		this.menuGroup = menuGroupId;
+		this.imgName = imgName;
+	}
+
+
 
 }

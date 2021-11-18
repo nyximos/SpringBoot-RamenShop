@@ -29,6 +29,9 @@ public class MenuGroup {
 	
 	@OneToMany(mappedBy="menuGroup")
 	private List<OptionGroup> optionGroups = new ArrayList<>();
+	
+	public MenuGroup() {}
+	
 
 	public Long getId() {
 		return id;
