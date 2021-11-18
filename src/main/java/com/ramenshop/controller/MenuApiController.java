@@ -79,19 +79,7 @@ public class MenuApiController {
     @DeleteMapping("/admin/edit")
     public String deleteMenu(@RequestParam(value="id") Long id) {
     	
-    	if(id== null) {
-    		System.out.println("올바르지 않은 접근");
-    		return "redirect:/admin/list";
-    	} try {
-    		boolean isDeleted = menuService.deleteMenu(id);
-    		if(isDeleted == false) {
-    			System.out.println("게시글 삭제 실패");
-    		}
-    	}catch(DataAccessException e) {
-    		System.out.println("데이터 처리과정 문제");
-    	}catch(Exception e) {
-    		System.out.println("시스템에 문제");
-    	}
+
     	
     	return "redirect:/admin/list";
     	
