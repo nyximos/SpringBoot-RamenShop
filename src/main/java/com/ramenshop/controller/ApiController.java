@@ -53,13 +53,11 @@ public class ApiController {
 		return new Result("ng");
 	}
 	
-	
+
 	@PutMapping("/admin/edit")
 	public Result modMenu(@RequestBody Menu menu) {
 		return new Result("ok");
 	}
 	
-
-
 	
 }

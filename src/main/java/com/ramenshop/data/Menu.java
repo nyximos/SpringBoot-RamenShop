@@ -80,6 +80,14 @@ public class Menu {
 		return price;
 	}
 
+	public String getDiscription() {
+		return discription;
+	}
+
+	public void setDiscription(String discription) {
+		this.discription = discription;
+	}
+
 	public void setPrice(int price) {
 		this.price = price;
 	}
@@ -102,17 +110,7 @@ public class Menu {
 		this.imgName = imgName;
 	}
 
-	public void setOrderMenus(List<OrderMenu> orderMenus) {
-		this.orderMenus = orderMenus;
-	}
-
-	public String getDiscription() {
-		return discription;
-	}
-
-	public void setDiscription(String discription) {
-		this.discription = discription;
-	}
+	
 
 	public BooleanType getIsSale() {
 		return isSale;
@@ -135,14 +133,10 @@ public class Menu {
 		return orderMenus;
 	}
 
-//	public void setOrderMenus(List<OrderMenu> orderMenus) {
-//		this.orderMenus = orderMenus;
-//	}
-
-	public void addOrderMenu(OrderMenu orderMenu) {
-		this.orderMenus.add(orderMenu);
-		orderMenu.setMenu(this);
+	public void setOrderMenus(List<OrderMenu> orderMenus) {
+		this.orderMenus = orderMenus;
 	}
+
 
 
 	public Menu(){}
@@ -154,6 +148,7 @@ public class Menu {
 		this.menuGroup = menuGroupId;
 		this.imgName = imgName;
 	}
+
 
 
 }
