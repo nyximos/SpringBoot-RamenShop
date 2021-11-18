@@ -29,14 +29,14 @@ public class MenuWebController {
 		return "menus";
 	}
 	
-    @GetMapping("/list")
+    @GetMapping("/admin/list")
     public String list(Model model) {
 		List<Menu> menus = menuService.findMenus();
 		model.addAttribute("menus", menus);
         return "list";
     }
 
-    @GetMapping("/post")
+    @GetMapping("/admin/post")
     public String post() {
         return "post";
     }

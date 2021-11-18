@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<title>Ramen shop - 메뉴보기</title>
 	<link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
-	<link rel='stylesheet' href='css/main.css'>
+	<link rel='stylesheet' href='/css/main.css'>
 
 </head>
 
@@ -21,6 +21,7 @@
 						<th scope="col">메뉴명</th>
 						<th scope="col">가격</th>
 						<th scope="col">설명</th>
+						<th scope="col">수정삭제</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -29,8 +30,8 @@
 							<td scope="row" width="20%">
 								<div><img th:src="@{/imgs/}+${menu.imgName}"></div>
 							</td>
-							<td scope="row" width="10%">
-								<div th:text="${menu.id}"></div>
+							<td scope="row" width="5%">
+								<div class="menuId" th:text="${menu.id}"></div>
 							</td>
 							<td scope="row" width="20%">
 								<div th:text="${menu.name}"></div>
@@ -38,8 +39,14 @@
 							<td scope="row" width="10%">
 								<div th:text="${menu.price}"></div>
 							</td>
-							<td scope="row" width="30%">
+							<td scope="row" width="25%">
 								<div th:text="${menu.discription}"></div>
+							</td>
+							<td>
+								<div class="col-auto delete" width="20%">
+									<a class="btn btn-outline-warning" th:href="@{/admin/edit/{${menu.id}}}"
+										role="button">삭제</a>
+								</div>
 							</td>
 						</a>
 					</tr>
@@ -49,7 +56,7 @@
 				<div class="menu-post-button">
 					<div class="col-auto mr-auto"></div>
 					<div class="col-auto">
-						<a class="btn btn-outline-warning" th:href="@{/post}" role="button">메뉴등록</a>
+						<a class="btn btn-outline-warning" th:href="@{/admin/post}" role="button">메뉴등록</a>
 					</div>
 				</div>
 			</div>
@@ -57,9 +64,28 @@
 	</div>
 	<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+	<script>
+		$('.delete').click(function () {
+			$.ajax({
+				url: "http://localhost:8086/api/admin/edit",
+				type: "DELETE",
+				success: function () {
+					alert('삭제성공!');
+					location.href = '/admin/list';
+				},
+				error: function () {
+					alert('삭제실패!');
+					location.href = '/admin/list';
+
+				}
+			})
+		})
+	</script>
+
 	<script>
 		$(window).scroll(function () {  //스크롤이 움직일때마다 이벤트 발생 
-			var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+			let position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
 			$('.quickmenu').stop().animate({top: position + "px"}, 1000); //해당 오브젝트 위치값 재설정
 		});
 	</script>

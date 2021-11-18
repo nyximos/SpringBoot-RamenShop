@@ -53,20 +53,13 @@ public class ApiController {
 		return new Result("ng");
 	}
 	
-	@PostMapping("/admin/edit")
-	public Result regMenu(@RequestBody Menu menu ) {
-		return new Result("ok");
-	}
 	
 	@PutMapping("/admin/edit")
 	public Result modMenu(@RequestBody Menu menu) {
 		return new Result("ok");
 	}
 	
-	@DeleteMapping("/admin/edit")
-	public Result delMenu(@RequestBody String id) {
-		return new Result("ok");
-	}
+
 
 	
 }

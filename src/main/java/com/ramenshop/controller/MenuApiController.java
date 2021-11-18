@@ -6,23 +6,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.ramenshop.data.Menu;
 import com.ramenshop.data.MenuGroup;
 import com.ramenshop.service.MenuService;
 
-@RestController
+@RestController("/api")
 public class MenuApiController {
 	
 	@Autowired
 	MenuService menuService;
 
-    @PostMapping("/post")
+    @PostMapping("/admin/edit")
     public String write(
     		@RequestParam(name="name") String name,
     		@RequestParam(name="price") int price,
@@ -51,7 +51,7 @@ public class MenuApiController {
             
             menu.setImgUrl(filePath);
             menuService.saveMenu(menu);
-            response.sendRedirect("list");
+            response.sendRedirect("/admin/list");
             
             return "등록성공";
          } catch(Exception e) {
@@ -59,5 +59,18 @@ public class MenuApiController {
             return "등록에러";
          }
     	
+    }
+    
+    
+    @DeleteMapping("/admin/edit")
+    public String write(@RequestParam(name="id") Long id, HttpServletResponse response) {
+    	try {
+    	menuService.deleteMenu(id);
+    	response.sendRedirect("/admin/list");
+    	return "삭제성공";
+    	} catch(Exception e) {
+    		e.printStackTrace();
+    		return "삭제실패";
+    	}
     }
 }
