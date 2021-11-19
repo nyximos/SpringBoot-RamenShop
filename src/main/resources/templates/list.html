@@ -42,10 +42,12 @@
 							<td scope="row" width="25%">
 								<div th:text="${menu.discription}"></div>
 							</td>
-							<td>
-								<div class="col-auto delete" width="20%">
-									<a class="btn btn-outline-warning" th:href="@{/admin/edit/{${menu.id}}}"
-										role="button">삭제</a>
+							<td scope="row" width="20%">
+								<div>
+									<form th:action="@{'/admin/list/{id}'(id=${menu.id})}" th:method="Post">
+										<input type="hidden" name="_method" value="delete" />
+										<button class="btn btn-outline-warning" type="submit" id="submitButton">삭제 </button>
+									</form>
 								</div>
 							</td>
 						</a>
