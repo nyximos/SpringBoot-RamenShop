@@ -3,66 +3,73 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Ramen shop - 메뉴보기</title>
+	<title>Ramen Shop - Menu Post</title>
 	<link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
-	<link rel='stylesheet' href='css/main.css'>
-
+	<link rel='stylesheet' href='/css/main.css'>
 </head>
 
 <body>
 	<header th:insert="header.html"></header>
 	<div class="container">
-		<div class="content">
-			<table>
-				<thead class="thead-light">
-					<tr class="text-center">
-						<th scope="col">이미지</th>
-						<th scope="col">메뉴번호</th>
-						<th scope="col">메뉴명</th>
-						<th scope="col">가격</th>
-						<th scope="col">설명</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr class="text-center menu-object" th:each="menu : ${menus}">
-						<a th:href="@{/menus/{menuId}(menuId=${menu.getId()})}">
-							<td scope="row" width="20%">
-								<div><img th:src="@{/imgs/}+${menu.imgName}"></div>
-							</td>
-							<td scope="row" width="10%">
-								<div th:text="${menu.id}"></div>
-							</td>
-							<td scope="row" width="20%">
-								<div th:text="${menu.name}"></div>
-							</td>
-							<td scope="row" width="10%">
-								<div th:text="${menu.price}"></div>
-							</td>
-							<td scope="row" width="30%">
-								<div th:text="${menu.discription}"></div>
-							</td>
-						</a>
-					</tr>
-				</tbody>
-			</table>
-			<div class="row quickmenu">
-				<div class="menu-post-button">
-					<div class="col-auto mr-auto"></div>
-					<div class="col-auto">
-						<a class="btn btn-outline-warning" th:href="@{/post}" role="button">메뉴등록</a>
+		<div class="form-box">
+			<form th:action="@{/admin/edit/{menuId}(menuId=menu.id)}" method="post" enctype="multipart/form-data">
+				<div class="form-group row">
+					<label for="inputId" class="col-sm-2 col-form-label"><strong>메뉴아이디</strong></label>
+					<div class="col-sm-10">
+						<input disabled type="text" name="id" class="form-control" id="inputId" th:value="${menu.id}">
 					</div>
 				</div>
+				<div class="form-group row">
+					<label for="inputTitle" class="col-sm-2 col-form-label"><strong>메뉴명</strong></label>
+					<div class="col-sm-10">
+						<input type="text" name="name" class="form-control" id="inputTitle" th:value="${menu.name}">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputAuthor" class="col-sm-2 col-form-label"><strong>가격</strong></label>
+					<div class="col-sm-10">
+						<input type="number" name="price" class="form-control" id="inputPrice" th:value="${menu.price}">
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputContent" class="col-sm-2 col-form-label"><strong>설명</strong></label>
+					<div class="col-sm-10">
+						<textarea type="text" name="discription" class="form-control" id="inputDiscription"
+							th:text="${menu.discription}"></textarea>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label for="inputContent" class="col-sm-2 col-form-label"><strong>이미지</strong></label>
+					<div class="col-sm-10">
+						<input type="text" class="upload-name" th:value="${menu.imgName}" disabled>
+						<input type="file" name="imgFile" th:id="|file_${menu.id}|" class="upload-hidden"
+							onchange="changeFilename(this)" />
+					</div>
+				</div>
+					<div class="form-group row">
+						<label for="inputContent" class="col-sm-2 col-form-label" disabled><strong>메뉴그룹</strong></label>
+						<div class="col-sm-10">
+							<select th:name="menuGroupId" class="form-select form-select-lg mb-3"
+								aria-label=".form-select-lg example" id="selectMenuGroup">
+								<option th:text="${menu.getMenuGroupId}" th:value="${menu.getMenuGroupId}"></option>
+							</select>
+						</div>
+					</div>
+
+
+		</div>
+		<div class="row">
+			<div class="col-auto mr-auto"></div>
+			<div class="col-auto">
+				<input class="btn btn-outline-warning" type="submit" role="button" value="수정하기">
 			</div>
 		</div>
+		</form>
+	</div>
 	</div>
 	<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	<script>
-		$(window).scroll(function () {  //스크롤이 움직일때마다 이벤트 발생 
-			var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
-			$('.quickmenu').stop().animate({top: position + "px"}, 1000); //해당 오브젝트 위치값 재설정
-		});
-	</script>
+
 </body>
 
 </html>

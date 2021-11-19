@@ -1,17 +1,20 @@
 package com.ramenshop.controller;
 
 import java.io.File;
-import java.io.IOException;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
-import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,60 +24,83 @@ import com.ramenshop.service.MenuService;
 
 @RestController("/api")
 public class MenuApiController {
-	
+
 	@Autowired
 	MenuService menuService;
 
-    @PostMapping("/admin/edit")
-    public String postMenu(
-    		@RequestParam(name="name") String name,
-    		@RequestParam(name="price") int price,
-    		@RequestParam(name="discription") String discription,
-    		@RequestParam(name="imgFile") MultipartFile imgFile,
-    		@RequestParam(name="menuGroupId") String menuGroupId,
-    		HttpServletRequest request,
-    		HttpServletResponse response
-    		) {
-    	
-    	//String name, int price, String discription, String imgUrl, Menugroup menuGroupId
-    	
-    	
-        try { // 이미지 경로를 DB에 셋팅
-            String baseDir = request.getSession().getServletContext().getRealPath("\\"); //webapp까지 경로
-            System.out.println(baseDir);
-            String filePath = baseDir + "\\imgs\\" + imgFile.getOriginalFilename();
-            imgFile.transferTo(new File(filePath)); // 해당 경로에 이미지 파일 저장
-            
-            MenuGroup menuGroup = new MenuGroup();
-            menuGroup.setId(Long.parseLong(menuGroupId));
-            String imgName = imgFile.getOriginalFilename();
-            
-            Menu menu = new Menu(name, price,discription, menuGroup, imgName);
-            
-            
-            menu.setImgUrl(filePath);
-            menuService.saveMenu(menu);
-            response.sendRedirect("/admin/list");
-            
-            return "등록성공";
-         } catch(Exception e) {
-            e.printStackTrace();
-            return "등록에러";
-         }
-    	
-    }
-    
-    
-//    @DeleteMapping("/admin/edit")
-//    public String deleteMenu(@RequestBody Menu menu) {
-//    	Menu findMenu = menuService.findMenuId(menu.getId());
-//    	if(findMenu == null) {
-//    		return "삭제실패, 데이터 미존재";
-//    	} else {
-//    		menuService.deleteMenu(menu.getId());
-//    		return "삭제성공!";
-//    	}
-//    }
+	// String name, int price, String discription, String imgUrl, Menugroup
+	// menuGroupId
 
+	@PostMapping("/admin/edit/{menuId}")
+	public String putMenu(@RequestParam(name = "id") Long id,
+			@RequestParam(name = "name") String name, @RequestParam(name = "price") int price,
+			@RequestParam(name = "discription") String discription,
+			@RequestParam(name = "imgFile") MultipartFile imgFile,
+			@RequestParam(name = "menuGroupId") String menuGroupId, HttpServletRequest request,
+			HttpServletResponse response) {
+
+		try {
+			String baseDir = request.getSession().getServletContext().getRealPath("\\"); // webapp까지 경로
+			System.out.println(baseDir);
+			String filePath = baseDir + "\\imgs\\" + imgFile.getOriginalFilename();
+			imgFile.transferTo(new File(filePath)); // 해당 경로에 이미지 파일 저장
+			String imgName = imgFile.getOriginalFilename();
+
+			Menu getMenu = menuService.findMenu(id).get();
+			getMenu.setName(name);
+			getMenu.setPrice(price);
+			getMenu.setDiscription(discription);
+			getMenu.setImgName(imgName);
+			getMenu.setImgUrl(filePath);
+			
+			
+			
+			getMenu.setMenuGroup(menuService.findMenuGroup(id).get());
+
+
+			
+			response.sendRedirect("/admin/list");
+
+			return "등록성공";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "등록에러";
+		}
+
+	}
+
+	@PostMapping("/admin/edit")
+	public String postMenu(@RequestParam(name = "name") String name, @RequestParam(name = "price") int price,
+			@RequestParam(name = "discription") String discription,
+			@RequestParam(name = "imgFile") MultipartFile imgFile,
+			@RequestParam(name = "menuGroupId") String menuGroupId, HttpServletRequest request,
+			HttpServletResponse response) {
+
+		// String name, int price, String discription, String imgUrl, Menugroup
+		// menuGroupId
+
+		try { // 이미지 경로를 DB에 셋팅
+			String baseDir = request.getSession().getServletContext().getRealPath("\\"); // webapp까지 경로
+			System.out.println(baseDir);
+			String filePath = baseDir + "\\imgs\\" + imgFile.getOriginalFilename();
+			imgFile.transferTo(new File(filePath)); // 해당 경로에 이미지 파일 저장
+
+			MenuGroup menuGroup = new MenuGroup();
+			menuGroup.setId(Long.parseLong(menuGroupId));
+			String imgName = imgFile.getOriginalFilename();
+
+			Menu menu = new Menu(name, price, discription, menuGroup, imgName);
+
+			menu.setImgUrl(filePath);
+			menuService.saveMenu(menu);
+			response.sendRedirect("/admin/list");
+
+			return "등록성공";
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "등록에러";
+		}
+
+	}
 
 }

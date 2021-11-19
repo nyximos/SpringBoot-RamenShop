@@ -19,19 +19,12 @@ img {
 }
 
 .content{
-	max-width: 1200px;
 	width:100%;
 	box-sizing: border-box;
 	position: absolute;
 	left: auto;
 	right: auto;
 }
-
-.content{
-	width:70%;
-	margin-right: 30px;
-}
-
 
 
 th{
@@ -55,8 +48,6 @@ td > div{
 
 button{
 	box-sizing: border-box;
-	position: fixed;
-	clear:both;
 }
 
 body{
@@ -65,12 +56,19 @@ body{
 
 .quickmenu { 
 	position: absolute;
-	margin-top:100px;
+	margin-top:50px;
 	right:-170px;
 	width:250px;
 	height:250px;
 	padding:50px;
+}
 
-
-
+.form-box{
+	background-color: peachpuff;
+	width:600px;
+	padding:50px;
+	position:absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);	
 }
