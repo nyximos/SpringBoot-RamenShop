@@ -75,14 +75,6 @@ public class MenuApiController {
 //    		return "삭제성공!";
 //    	}
 //    }
-    
-    @DeleteMapping("/admin/edit")
-    public String deleteMenu(@RequestParam(value="id") Long id) {
-    	
 
-    	
-    	return "redirect:/admin/list";
-    	
-    }
 
 }
