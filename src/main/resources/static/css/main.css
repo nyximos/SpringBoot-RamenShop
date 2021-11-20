@@ -57,10 +57,10 @@ body{
 .quickmenu { 
 	position: absolute;
 	margin-top:50px;
-	right:-170px;
 	width:250px;
 	height:250px;
 	padding:50px;
+	margin-left: 1200px;;
 }
 
 
