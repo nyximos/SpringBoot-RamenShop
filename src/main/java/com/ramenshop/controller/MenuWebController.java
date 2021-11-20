@@ -1,6 +1,7 @@
 package com.ramenshop.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,7 +47,20 @@ public class MenuWebController {
         return "list";
     }
 
-    @GetMapping("/admin/post")
+    @GetMapping("/admin/list/{id}")
+    public String post(Model model, @PathVariable Long id) {
+    	try {
+//			Optional<Menu> menu = menuService.findMenu(id);
+			menuService.findMenu(id).ifPresent(o -> model.addAttribute("menu", o));
+//			model.addAttribute("menu", menu);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+        return "menu";
+    }
+    
+    @GetMapping("/admin/list/post")
     public String post() {
         return "post";
     }

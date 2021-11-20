@@ -128,6 +128,11 @@ public class Menu {
 		this.menuGroup = menuGroup;
 		menuGroup.getMenus().add(this);
 	}
+	
+	public String getMenuGroupId() {
+		String menuGroupId = Long.toString(this.menuGroup.getId());
+		return menuGroupId;
+	}
 
 	public List<OrderMenu> getOrderMenus() {
 		return orderMenus;
