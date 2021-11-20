@@ -35,6 +35,12 @@ public class MenuService {
 	public List<Menu> findMenus() {
 		return menuRepository.findAll();
 	}
+	
+	public List<Menu> findMenusByGroup(Long menuGroupId) {
+		MenuGroup mg = new MenuGroup();
+		mg.setId(menuGroupId);
+		return menuRepository.findByMenuGroup(mg);
+	}
 
 	public Optional<Menu> findMenu(Long menuId) throws Exception {
 		Optional<Menu> menu = menuRepository.findById(menuId);

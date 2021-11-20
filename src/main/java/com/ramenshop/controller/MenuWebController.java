@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.ramenshop.data.Menu;
+import com.ramenshop.data.MenuGroup;
+import com.ramenshop.repository.MenuRepository;
 import com.ramenshop.service.MenuService;
 
 @Controller
@@ -31,9 +33,16 @@ public class MenuWebController {
 		return "menus";
 	}
 	
-    @GetMapping("/admin/list")
+	@GetMapping("/admin/list")
     public String list(Model model) {
 		List<Menu> menus = menuService.findMenus();
+		model.addAttribute("menus", menus);
+        return "list";
+    }
+	@GetMapping("/admin/list/group/{id}")
+    public String groupList(Model model,@PathVariable Long id) {
+		List<Menu> menus = menuService.findMenusByGroup(id);
+		
 		model.addAttribute("menus", menus);
         return "list";
     }

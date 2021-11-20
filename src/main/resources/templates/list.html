@@ -13,10 +13,10 @@
 	<header th:insert="header.html"></header>
 	<div class="container">
 		<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-			<button type="button" class="btn1 btn-menugroup btn btn-danger" onclick="selectMenuGroupId(1)">면</button>
-			<button type="button" class="btn2 btn-menugroup btn btn-warning" onclick="selectMenuGroupId(2)">밥</button>
-			<button type="button" class="btn3 btn-menugroup btn btn-success" onclick="selectMenuGroupId(3)">사이드</button>
-			<button type="button" class="btn4 btn-menugroup btn btn-primary" onclick="selectMenuGroupId(4)">음료</button>
+			<button type="button" class="btn1 btn-menugroup btn btn-danger" onclick="location.href='/admin/list/group/1'">면</button>
+			<button type="button" class="btn2 btn-menugroup btn btn-warning" onclick="location.href='/admin/list/group/2'">밥</button>
+			<button type="button" class="btn3 btn-menugroup btn btn-success" onclick="location.href='/admin/list/group/3'">사이드</button>
+			<button type="button" class="btn4 btn-menugroup btn btn-primary" onclick="location.href='/admin/list/group/4'">음료</button>
 		</div>
 		<div class="content">
 			<table>
@@ -74,10 +74,10 @@
 		//<![CDATA[
 		
 		var menuGroupId = /*[[${menu}]]*/ "";
-		var
+		
 
 		function selectMenuGroupId(menugroupId) {
-
+			console.log("test");
 		}
 
 		//]]>
