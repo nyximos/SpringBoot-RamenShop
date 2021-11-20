@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.Nullable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.ramenshop.data.Menu;
 import com.ramenshop.data.MenuGroup;
+import com.ramenshop.repository.MenuRepository;
 import com.ramenshop.service.MenuService;
 
 @RestController("/api")
@@ -31,32 +33,39 @@ public class MenuApiController {
 	// String name, int price, String discription, String imgUrl, Menugroup
 	// menuGroupId
 
-	@PostMapping("/admin/edit/{menuId}")
-	public String putMenu(@RequestParam(name = "id") Long id,
+	@PostMapping("/admin/edit/{id}")
+	public String putMenu(
+			@PathVariable(name = "id") Long id,
 			@RequestParam(name = "name") String name, @RequestParam(name = "price") int price,
 			@RequestParam(name = "discription") String discription,
-			@RequestParam(name = "imgFile") MultipartFile imgFile,
+			@Nullable @RequestParam(name = "imgFile") MultipartFile imgFile,
 			@RequestParam(name = "menuGroupId") String menuGroupId, HttpServletRequest request,
-			HttpServletResponse response) {
-
+			HttpServletResponse response
+			) {
 		try {
-			String baseDir = request.getSession().getServletContext().getRealPath("\\"); // webapp까지 경로
-			System.out.println(baseDir);
-			String filePath = baseDir + "\\imgs\\" + imgFile.getOriginalFilename();
-			imgFile.transferTo(new File(filePath)); // 해당 경로에 이미지 파일 저장
-			String imgName = imgFile.getOriginalFilename();
+			
+			
+			
 
-			Menu getMenu = menuService.findMenu(id).get();
-			getMenu.setName(name);
-			getMenu.setPrice(price);
-			getMenu.setDiscription(discription);
-			getMenu.setImgName(imgName);
-			getMenu.setImgUrl(filePath);
-			
-			
-			
-			getMenu.setMenuGroup(menuService.findMenuGroup(id).get());
+			Menu menu = menuService.findMenu(id).get();
+			menu.setName(name);
+			menu.setPrice(price);
+			menu.setDiscription(discription);
 
+			System.out.println(imgFile.getSize());
+			if(imgFile.getSize() > 0) {
+				String baseDir = request.getSession().getServletContext().getRealPath("\\"); // webapp까지 경로
+				System.out.println(baseDir);
+				String filePath = baseDir + "\\imgs\\" + imgFile.getOriginalFilename();
+				imgFile.transferTo(new File(filePath)); // 해당 경로에 이미지 파일 저장
+				String imgName = imgFile.getOriginalFilename();
+				menu.setImgName(imgName);
+				menu.setImgUrl(filePath);
+			}
+			
+			menu.setMenuGroup(menuService.findMenuGroup(Long.parseLong(menuGroupId)).get());
+
+			menuService.saveMenu(menu);
 
 			
 			response.sendRedirect("/admin/list");
