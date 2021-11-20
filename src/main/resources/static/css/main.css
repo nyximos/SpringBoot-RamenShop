@@ -73,3 +73,11 @@ body{
 	top: 50%;
 	transform: translate(-50%, -50%);	
 }
+
+.btn-group{
+	margin: 0 auto;
+}
+
+.btn-menugroup{
+	width:100px;
+}
