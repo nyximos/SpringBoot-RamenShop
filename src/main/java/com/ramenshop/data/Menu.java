@@ -17,7 +17,6 @@ import javax.persistence.Table;
 
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import com.ramenshop.data.enums.BooleanType;
 
 
 
@@ -47,9 +46,9 @@ public class Menu {
 	@Column(nullable = false)
 	private String discription;
 	
-	@Column(name = "is_sale",nullable = false)
-	private BooleanType isSale=BooleanType.Y;
 	
+	@Column(nullable = false)
+	private boolean isSale = true;
 	
 	@ManyToOne(fetch = FetchType.LAZY,targetEntity=MenuGroup.class)
 	@JoinColumn(name="menu_group_id")
@@ -110,13 +109,13 @@ public class Menu {
 		this.imgName = imgName;
 	}
 
-	
 
-	public BooleanType getIsSale() {
+
+	public boolean getIsSale() {
 		return isSale;
 	}
 
-	public void setIsSale(BooleanType isSale) {
+	public void setIsSale(boolean isSale) {
 		this.isSale = isSale;
 	}
 
@@ -146,12 +145,13 @@ public class Menu {
 
 	public Menu(){}
 	
-	public Menu(String name, int price, String discription, MenuGroup menuGroupId, String imgName){
+	public Menu(String name, int price, String discription, MenuGroup menuGroupId, String imgName, boolean isSsale){
 		this.name = name;
 		this.price = price;
 		this.discription = discription;
 		this.menuGroup = menuGroupId;
 		this.imgName = imgName;
+		this.isSale = isSale;
 	}
 
 

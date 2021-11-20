@@ -13,10 +13,14 @@
 	<header th:insert="header.html"></header>
 	<div class="container">
 		<div class="btn-group" role="group" aria-label="Basic mixed styles example">
-			<button type="button" class="btn1 btn-menugroup btn btn-danger" onclick="location.href='/admin/list/group/1'">면</button>
-			<button type="button" class="btn2 btn-menugroup btn btn-warning" onclick="location.href='/admin/list/group/2'">밥</button>
-			<button type="button" class="btn3 btn-menugroup btn btn-success" onclick="location.href='/admin/list/group/3'">사이드</button>
-			<button type="button" class="btn4 btn-menugroup btn btn-primary" onclick="location.href='/admin/list/group/4'">음료</button>
+			<button type="button" class="btn1 btn-menugroup btn btn-danger"
+				onclick="location.href='/admin/list/group/1'">면</button>
+			<button type="button" class="btn2 btn-menugroup btn btn-warning"
+				onclick="location.href='/admin/list/group/2'">밥</button>
+			<button type="button" class="btn3 btn-menugroup btn btn-success"
+				onclick="location.href='/admin/list/group/3'">사이드</button>
+			<button type="button" class="btn4 btn-menugroup btn btn-primary"
+				onclick="location.href='/admin/list/group/4'">음료</button>
 		</div>
 		<div class="content">
 			<table>
@@ -27,6 +31,7 @@
 						<th scope="col">메뉴명</th>
 						<th scope="col">가격</th>
 						<th scope="col">설명</th>
+						<th scope="col">판매여부</th>
 						<th scope="col"></th>
 					</tr>
 				</thead>
@@ -42,11 +47,15 @@
 						<td scope="row" width="20%">
 							<div th:text="${menu.name}"></div>
 						</td>
-						<td scope="row" width="10%">
+						<td scope="row" width="5%">
 							<div th:text="${menu.price}"></div>
 						</td>
-						<td scope="row" width="25%">
+						<td scope="row" width="20%">
 							<div th:text="${menu.discription}"></div>
+						</td>
+						<td scope="row" width="15%">
+							<div th:if="${menu.isSale.equals(true)}">판매</div>
+							<div th:if="${menu.isSale.equals(false)}">미판매</div>
 						</td>
 						<td scope="row" width="20%">
 							<form th:action="@{'/admin/list/{id}'(id=${menu.id})}" th:method="Post">
@@ -72,9 +81,9 @@
 
 	<script>
 		//<![CDATA[
-		
+
 		var menuGroupId = /*[[${menu}]]*/ "";
-		
+
 
 		function selectMenuGroupId(menugroupId) {
 			console.log("test");

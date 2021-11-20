@@ -39,18 +39,20 @@ public class MenuApiController {
 			@RequestParam(name = "name") String name, @RequestParam(name = "price") int price,
 			@RequestParam(name = "discription") String discription,
 			@Nullable @RequestParam(name = "imgFile") MultipartFile imgFile,
-			@RequestParam(name = "menuGroupId") String menuGroupId, HttpServletRequest request,
+			@RequestParam(name = "menuGroupId") String menuGroupId,
+			@RequestParam(name = "isSale") String isSale,
+			HttpServletRequest request,
 			HttpServletResponse response
 			) {
 		try {
 			
+			Boolean booleanIsSale = Boolean.parseBoolean(isSale);
 			
-			
-
 			Menu menu = menuService.findMenu(id).get();
 			menu.setName(name);
 			menu.setPrice(price);
 			menu.setDiscription(discription);
+			menu.setIsSale(booleanIsSale);
 
 			System.out.println(imgFile.getSize());
 			if(imgFile.getSize() > 0) {
@@ -58,6 +60,9 @@ public class MenuApiController {
 				System.out.println(baseDir);
 				String filePath = baseDir + "\\imgs\\" + imgFile.getOriginalFilename();
 				imgFile.transferTo(new File(filePath)); // 해당 경로에 이미지 파일 저장
+				
+				
+				
 				String imgName = imgFile.getOriginalFilename();
 				menu.setImgName(imgName);
 				menu.setImgUrl(filePath);
@@ -82,7 +87,8 @@ public class MenuApiController {
 	public String postMenu(@RequestParam(name = "name") String name, @RequestParam(name = "price") int price,
 			@RequestParam(name = "discription") String discription,
 			@RequestParam(name = "imgFile") MultipartFile imgFile,
-			@RequestParam(name = "menuGroupId") String menuGroupId, HttpServletRequest request,
+			@RequestParam(name = "menuGroupId") String menuGroupId,
+			HttpServletRequest request,
 			HttpServletResponse response) {
 
 		// String name, int price, String discription, String imgUrl, Menugroup
@@ -94,11 +100,13 @@ public class MenuApiController {
 			String filePath = baseDir + "\\imgs\\" + imgFile.getOriginalFilename();
 			imgFile.transferTo(new File(filePath)); // 해당 경로에 이미지 파일 저장
 
+
+			
 			MenuGroup menuGroup = new MenuGroup();
 			menuGroup.setId(Long.parseLong(menuGroupId));
 			String imgName = imgFile.getOriginalFilename();
 
-			Menu menu = new Menu(name, price, discription, menuGroup, imgName);
+			Menu menu = new Menu(name, price, discription, menuGroup, imgName, true);
 
 			menu.setImgUrl(filePath);
 			menuService.saveMenu(menu);
