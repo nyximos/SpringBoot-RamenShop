@@ -16,46 +16,39 @@ import com.ramenshop.repository.MenuRepository;
 import com.ramenshop.service.MenuService;
 
 @Controller
-public class MenuWebController {
+public class AdminMenuWebController {
 	
 	@Autowired
 	MenuService menuService;
 	
-	public MenuWebController(MenuService menuService) {
+	public AdminMenuWebController(MenuService menuService) {
 		this.menuService = menuService;
 	}
 
-	@GetMapping("/menus")
-	public String menusList(Model model) {
-		
-//		List<MenuDto> menus = menuService.getMenuList();
-//		model.addAttribute("menus", menus);
-		return "menus";
-	}
 	
-	@GetMapping("/admin/list")
+	@GetMapping("/admin/menus")
     public String list(Model model) {
 		List<Menu> menus = menuService.findMenus();
 		model.addAttribute("menus", menus);
-        return "list";
+        return "admin-menus";
     }
-	@GetMapping("/admin/list/group/{id}")
+	@GetMapping("/admin/menus/group/{id}")
     public String groupList(Model model,@PathVariable Long id) {
 		List<Menu> menus = menuService.findMenusByGroup(id);
 		
 		model.addAttribute("menus", menus);
-        return "list";
+        return "admin-menus";
     }
     
-    @PostMapping("/admin/list/{id}")
+    @PostMapping("/admin/menus/delete/{id}")
     public String delList(Model model,@PathVariable Long id) {
       menuService.deleteMenu(id);
       List<Menu> menus = menuService.findMenus();
       model.addAttribute("menus", menus);
-        return "list";
+        return "admin-menus";
     }
 
-    @GetMapping("/admin/list/{id}")
+    @GetMapping("/admin/menus/{id}")
     public String post(Model model, @PathVariable Long id) {
     	try {
 			menuService.findMenu(id).ifPresent(o -> model.addAttribute("menu", o));
@@ -63,10 +56,10 @@ public class MenuWebController {
 			e.printStackTrace();
 		}
     	
-        return "menu";
+        return "admin-menu";
     }
     
-    @GetMapping("/admin/list/post")
+    @GetMapping("/admin/menus/post")
     public String post() {
         return "post";
     }

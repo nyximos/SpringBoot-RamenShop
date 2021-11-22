@@ -14,13 +14,13 @@
 	<div class="container">
 		<div class="btn-group" role="group" aria-label="Basic mixed styles example">
 			<button type="button" class="btn1 btn-menugroup btn btn-danger"
-				onclick="location.href='/admin/list/group/1'">면</button>
+				onclick="location.href='/admin/menus/group/1'">면</button>
 			<button type="button" class="btn2 btn-menugroup btn btn-warning"
-				onclick="location.href='/admin/list/group/2'">밥</button>
+				onclick="location.href='/admin/menus/group/2'">밥</button>
 			<button type="button" class="btn3 btn-menugroup btn btn-success"
-				onclick="location.href='/admin/list/group/3'">사이드</button>
+				onclick="location.href='/admin/menus/group/3'">사이드</button>
 			<button type="button" class="btn4 btn-menugroup btn btn-primary"
-				onclick="location.href='/admin/list/group/4'">음료</button>
+				onclick="location.href='/admin/menus/group/4'">음료</button>
 		</div>
 		<div class="content">
 			<table>
@@ -37,7 +37,7 @@
 				</thead>
 				<tbody>
 					<tr class="text-center menu-object" th:each="menu : ${menus}"
-						th:onclick="'location.href=\''+ @{/admin/list/{id}(id=${menu.id})} + '\''">
+						th:onclick="'location.href=\''+ @{/admin/menus/{id}(id=${menu.id})} + '\''">
 						<td scope="row" width="20%">
 							<div><img th:src="@{/imgs/}+${menu.imgName}"></div>
 						</td>
@@ -58,7 +58,7 @@
 							<div th:if="${menu.isSale.equals(false)}">미판매</div>
 						</td>
 						<td scope="row" width="20%">
-							<form th:action="@{'/admin/list/{id}'(id=${menu.id})}" th:method="Post">
+							<form th:action="@{'/admin/menus/delete/{id}'(id=${menu.id})}" th:method="Post">
 								<input type="hidden" name="_method" value="delete" />
 								<button class="btn btn-outline-warning" type="submit" id="submitButton">삭제 </button>
 							</form>
@@ -70,7 +70,7 @@
 				<div class="menu-post-button">
 					<div class="col-auto mr-auto"></div>
 					<div class="col-auto">
-						<a class="btn btn-outline-warning" th:href="@{/admin/list/post}" role="button">메뉴등록</a>
+						<a class="btn btn-outline-warning" th:href="@{/admin/menus/post}" role="button">메뉴등록</a>
 					</div>
 				</div>
 			</div>
