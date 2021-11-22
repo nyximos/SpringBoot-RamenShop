@@ -49,7 +49,6 @@ public class MenuWebController {
     
     @PostMapping("/admin/list/{id}")
     public String delList(Model model,@PathVariable Long id) {
-      System.out.println("컨트롤러안");
       menuService.deleteMenu(id);
       List<Menu> menus = menuService.findMenus();
       model.addAttribute("menus", menus);
@@ -59,9 +58,7 @@ public class MenuWebController {
     @GetMapping("/admin/list/{id}")
     public String post(Model model, @PathVariable Long id) {
     	try {
-//			Optional<Menu> menu = menuService.findMenu(id);
 			menuService.findMenu(id).ifPresent(o -> model.addAttribute("menu", o));
-//			model.addAttribute("menu", menu);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
