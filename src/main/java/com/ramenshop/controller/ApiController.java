@@ -29,7 +29,7 @@ public class ApiController {
 		return new BCryptPasswordEncoder();
 	}
 
-	
+	//관리자 등록
 	@PostMapping("/admin/members")
 	public Result regMember(@RequestBody Admin admin ) {
 		Optional<Admin> a = adminRepository.findById(admin.getAdminId());
@@ -41,6 +41,8 @@ public class ApiController {
 		return new Result("ng");
 
 	}
+	
+	//관리자 삭제
 	@DeleteMapping("/admin/members")
 	public Result delMember(@RequestBody Admin admin ) {
 		Optional<Admin> a = adminRepository.findById(admin.getAdminId());

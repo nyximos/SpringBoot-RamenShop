@@ -10,10 +10,11 @@
 	<h1>index</h1>
 	<a sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a>
 	<div sec:authorize="isAuthenticated()">
-	<a th:href="@{/admin/members}">사용자 추가</a>
-	<form name="logoutForm" th:action="@{/logout}" method="post">
-		<input type="submit" value="Sign Out" />
-	</form>
+		<a th:href="@{/admin/members}">사용자 추가</a>
+		<form name="logoutForm" th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" />
+		</form>
+		<a th:href="@{/admin/menus}">메뉴 관리</a>
 	</div>
 </body>
 

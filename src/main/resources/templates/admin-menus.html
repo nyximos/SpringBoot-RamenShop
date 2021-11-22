@@ -90,27 +90,7 @@
 		}
 
 		//]]>
-	</script>
-
-	<script>
-		$('.delete').click(function () {
-			$.ajax({
-				url: "http://localhost:8086/api/admin/edit",
-				type: "DELETE",
-				success: function () {
-					alert('삭제성공!');
-					location.href = '/admin/list';
-				},
-				error: function () {
-					alert('삭제실패!');
-					location.href = '/admin/list';
-
-				}
-			})
-		});
-	</script>
-
-	<script>
+	
 		$(window).scroll(function () {  //스크롤이 움직일때마다 이벤트 발생 
 			let position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
 			$('.quickmenu').stop().animate({top: position + "px"}, 1000); //해당 오브젝트 위치값 재설정

@@ -20,18 +20,16 @@ public class AdminMenuWebController {
 	
 	@Autowired
 	MenuService menuService;
-	
-	public AdminMenuWebController(MenuService menuService) {
-		this.menuService = menuService;
-	}
 
-	
+	//**어드민 메뉴 페이지**
 	@GetMapping("/admin/menus")
     public String list(Model model) {
 		List<Menu> menus = menuService.findMenus();
 		model.addAttribute("menus", menus);
         return "admin-menus";
     }
+	
+	//카테고리별 메뉴 보기
 	@GetMapping("/admin/menus/group/{id}")
     public String groupList(Model model,@PathVariable Long id) {
 		List<Menu> menus = menuService.findMenusByGroup(id);
@@ -40,15 +38,14 @@ public class AdminMenuWebController {
         return "admin-menus";
     }
     
-    @PostMapping("/admin/menus/delete/{id}")
-    public String delList(Model model,@PathVariable Long id) {
-      menuService.deleteMenu(id);
-      List<Menu> menus = menuService.findMenus();
-      model.addAttribute("menus", menus);
-        return "admin-menus";
+	//메뉴 등록 페이지
+	@GetMapping("/admin/menus/post")
+    public String post() {
+        return "post";
     }
-
-    @GetMapping("/admin/menus/{id}")
+	
+	//메뉴 수정 페이지
+	@GetMapping("/admin/menus/{id}")
     public String post(Model model, @PathVariable Long id) {
     	try {
 			menuService.findMenu(id).ifPresent(o -> model.addAttribute("menu", o));
@@ -58,11 +55,17 @@ public class AdminMenuWebController {
     	
         return "admin-menu";
     }
-    
-    @GetMapping("/admin/menus/post")
-    public String post() {
-        return "post";
+	
+	//메뉴 삭제
+    @PostMapping("/admin/menus/delete/{id}")
+    public String delList(Model model,@PathVariable Long id) {
+      menuService.deleteMenu(id);
+      List<Menu> menus = menuService.findMenus();
+      model.addAttribute("menus", menus);
+        return "admin-menus";
     }
+
+    
     
 
 	
