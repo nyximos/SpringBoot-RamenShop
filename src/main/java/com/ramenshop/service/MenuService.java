@@ -62,4 +62,9 @@ public class MenuService {
 		}
 	}
 
+	public List<Menu> findAllByIsSale(boolean b) {
+		List<Menu> menus = menuRepository.findAllByIsSale(true);
+			return menus;
+	}
+
 }
