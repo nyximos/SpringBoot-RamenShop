@@ -1,5 +1,6 @@
 package com.ramenshop.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,11 +34,19 @@ public class MenuWebController {
 		List<Menu> groupMenus = menuService.findMenusByGroup(id);
 		List<Menu> saleMenus = menuService.findAllByIsSale(true);
 		
-		if(groupMenus.equals(saleMenus)) {
-			List<Menu> menus = groupMenus;
-			model.addAttribute("menus", menus);
-		}
+		List<Menu> menus = new ArrayList<>();
 
+		for (int i = 0; i < saleMenus.size(); i++ ) {
+		  for (int j = 0; j < groupMenus.size(); j++) {
+		    if (groupMenus.get(j).getId().equals(saleMenus.get(i).getId())) {
+		      menus.add(groupMenus.get(j));
+		    }
+		  }
+		}
+		
+		model.addAttribute("menus", menus);
+
+		
         return "menus";
     }
 	

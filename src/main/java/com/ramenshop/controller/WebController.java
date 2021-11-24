@@ -46,11 +46,11 @@ public class WebController {
 //	public String menus(Model model) {
 //		return "menus";
 //	}
-	
-	@GetMapping("/menus/{menuId}")
-	public String menu(@PathVariable int menuId, Model model) {
-		return "menu";
-	}
+//	
+//	@GetMapping("/menus/{menuId}")
+//	public String menu(@PathVariable int menuId, Model model) {
+//		return "menu";
+//	}
 	
 	@GetMapping("/cart")
 	public String cart(Model model) {
