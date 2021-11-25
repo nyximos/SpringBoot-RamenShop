@@ -56,7 +56,6 @@ public class MenuWebController {
     	try {
 			menuService.findMenu(id).ifPresent(o -> model.addAttribute("menu", o));
 			List<Option> options = menuService.findOptions(id);
-			System.out.println(options.size());
 			model.addAttribute("options", options);
 		} catch (Exception e) {
 			e.printStackTrace();

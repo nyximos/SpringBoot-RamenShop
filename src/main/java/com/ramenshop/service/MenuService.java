@@ -90,11 +90,10 @@ public class MenuService {
 		
 		for (int i = 0; i < optionGroups.size(); i++) {
 			for (int j = 0; j < allOptions.size(); j++) {
-				if(optionGroups.get(i).getId().equals(allOptions.get(i).getOptionGroup().getId())) {
+				if(optionGroups.get(i).getId().equals(allOptions.get(j).getOptionGroup().getId())) {
 					options.add(allOptions.get(j));
 				}
 			}
-			
 		}
 		
 		return options;

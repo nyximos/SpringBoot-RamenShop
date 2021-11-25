@@ -21,8 +21,8 @@
 					 <div th:text="|${menu.price}원|"></div>
 					 <div th:text="${menu.discription}"></div>
 				</div>
-				<div class="option-box" th:each"option : ${options}">
-					<div th:text=${option.name}></div>
+				<div class="option-box" th:each="option : ${options}">
+					<div th:text="${option.name}"></div>
 				</div>
 			</div>
 		</div>
