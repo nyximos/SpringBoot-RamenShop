@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.ramenshop.data.Menu;
+import com.ramenshop.data.Option;
 import com.ramenshop.repository.MenuRepository;
 import com.ramenshop.service.MenuService;
 
@@ -54,6 +55,9 @@ public class MenuWebController {
 	public String getMenu(Model model, @PathVariable Long id) {
     	try {
 			menuService.findMenu(id).ifPresent(o -> model.addAttribute("menu", o));
+			List<Option> options = menuService.findOptions(id);
+			System.out.println(options.size());
+			model.addAttribute("options", options);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

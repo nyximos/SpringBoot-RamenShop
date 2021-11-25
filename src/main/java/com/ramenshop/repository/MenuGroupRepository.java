@@ -8,4 +8,6 @@ import com.ramenshop.data.MenuGroup;
 @Repository
 public interface MenuGroupRepository extends JpaRepository<MenuGroup, Long> {
 
+	MenuGroup findMenuGroupById(Long id);
+
 }

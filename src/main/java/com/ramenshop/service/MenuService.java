@@ -1,5 +1,6 @@
 package com.ramenshop.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -8,8 +9,12 @@ import org.springframework.stereotype.Service;
 
 import com.ramenshop.data.Menu;
 import com.ramenshop.data.MenuGroup;
+import com.ramenshop.data.Option;
+import com.ramenshop.data.OptionGroup;
 import com.ramenshop.repository.MenuGroupRepository;
 import com.ramenshop.repository.MenuRepository;
+import com.ramenshop.repository.OptionGroupRepository;
+import com.ramenshop.repository.OptionRepository;
 
 @Service
 public class MenuService {
@@ -19,6 +24,12 @@ public class MenuService {
 
 	@Autowired
 	public MenuGroupRepository menuGroupRepository;
+	
+	@Autowired
+	public OptionGroupRepository optionGroupRepository;
+	
+	@Autowired
+	public OptionRepository optionRepository;
 
 	public MenuService(MenuRepository menuRepository) {
 		this.menuRepository = menuRepository;
@@ -65,6 +76,28 @@ public class MenuService {
 	public List<Menu> findAllByIsSale(boolean b) {
 		List<Menu> menus = menuRepository.findAllByIsSale(true);
 			return menus;
+	}
+	
+
+
+	public List<Option> findOptions(Long id) {
+		Optional<Menu> menu = menuRepository.findById(id);
+		MenuGroup menuGroup = menuGroupRepository.findMenuGroupById(menu.get().getMenuGroup().getId());
+		List<OptionGroup> optionGroups = optionGroupRepository.findOptionGroupByMenuGroup(menuGroup);
+		List<Option> allOptions = optionRepository.findAll();
+		
+		List<Option> options = new ArrayList<>();
+		
+		for (int i = 0; i < optionGroups.size(); i++) {
+			for (int j = 0; j < allOptions.size(); j++) {
+				if(optionGroups.get(i).getId().equals(allOptions.get(i).getOptionGroup().getId())) {
+					options.add(allOptions.get(j));
+				}
+			}
+			
+		}
+		
+		return options;
 	}
 
 }

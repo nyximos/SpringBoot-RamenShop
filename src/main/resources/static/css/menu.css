@@ -1,0 +1,25 @@
+.menu-component{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 200px;
+    width: 700px;
+    height: 1000px;
+    background: white;
+    box-shadow: 5px 5px 5px 5px #c4c4c4;
+    border-radius: 11px;
+}
+.menu-box{
+	padding: 15% 8%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.menu-title{
+    font-size: 30px;
+    color: #ec7676;
+}

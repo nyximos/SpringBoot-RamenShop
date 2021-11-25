@@ -21,6 +21,7 @@ public class AdminMenuWebController {
 	@Autowired
 	MenuService menuService;
 	
+	
 	public AdminMenuWebController(MenuService menuService) {
 		this.menuService = menuService;
 	}

@@ -14,6 +14,5 @@ import com.ramenshop.data.MenuGroup;
 public interface MenuRepository extends JpaRepository<Menu, Long> {
 	
 	public List<Menu> findByMenuGroup(MenuGroup id);
-	public List<Menu> findAllByIsSale(boolean bool);
-	
+	public List<Menu> findAllByIsSale(boolean bool);	
 }
