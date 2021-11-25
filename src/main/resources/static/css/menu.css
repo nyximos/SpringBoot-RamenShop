@@ -1,11 +1,15 @@
+body{
+	height: 1000px;
+}
+
 .menu-component{
 	position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin-top: 200px;
-    width: 700px;
-    height: 1000px;
+    width: 600px;
+    height: 700px;
     background: white;
     box-shadow: 5px 5px 5px 5px #c4c4c4;
     border-radius: 11px;
