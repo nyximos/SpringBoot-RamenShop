@@ -2,12 +2,13 @@ package com.ramenshop.controller;
 
 import java.io.File;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import javax.swing.filechooser.FileSystemView;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,7 +17,20 @@ import org.springframework.web.multipart.MultipartFile;
 public class WebController {
 	
 	@GetMapping("/")
-	public String index() {
+	public String index(HttpServletResponse response) {
+		
+		//쿠키 객체 생성, "cookieName"이라는 이름으로 쿠키를 생성하고, 그 값은 "cookieValue"로 설정
+		Cookie rememberCookie = new Cookie("cookieName", "cookieVlaue"); 
+		
+		// 쿠키 경로 설정, "/"는 모든 경로에서 사용하겠다는 뜻
+		rememberCookie.setPath("/");
+		
+		// 쿠키를 유지할 시간 설정(단위 : 초)
+		rememberCookie.setMaxAge(60*5);
+		
+		response.addCookie(rememberCookie);
+
+	
 		return "index";
 	}
 	
@@ -42,21 +56,7 @@ public class WebController {
 	 return "denied";
 	}
 
-//	@GetMapping("/menus")
-//	public String menus(Model model) {
-//		return "menus";
-//	}
-//	
-//	@GetMapping("/menus/{menuId}")
-//	public String menu(@PathVariable int menuId, Model model) {
-//		return "menu";
-//	}
-	
-	@GetMapping("/cart")
-	public String cart(Model model) {
-		return "cart";
-	}
-	
+
 	@GetMapping("/pay")
 	public String pay() {
 		return "pay";

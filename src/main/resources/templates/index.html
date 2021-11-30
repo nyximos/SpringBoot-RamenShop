@@ -1,19 +1,39 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
-	<title>index</title>
+	<title>Ramen shop</title>
+	<link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='/css/main.css'>
+	<link rel='stylesheet' href='/css/index.css'>
 </head>
 
+
 <body>
-	<h1>index</h1>
-	<a sec:authorize="isAnonymous()" th:href="@{/login}">로그인</a>
-	<div sec:authorize="isAuthenticated()">
-	<a th:href="@{/admin/members}">사용자 추가</a>
-	<form name="logoutForm" th:action="@{/logout}" method="post">
-		<input type="submit" value="Sign Out" />
-	</form>
+	<header sec:authorize="isAnonymous()" th:insert="header.html"></header>
+	<header sec:authorize="isAuthenticated()" th:insert="admin-header.html"></header>
+	<div class="container center">
+		<div class="outer-user-box" sec:authorize="isAnonymous()">
+			<div class="inner-user-box text-center">
+				<a th:href="@{/menus}">주문하기</a>
+			</div>
+			<div class="inner-user-box text-center">
+				<a th:href="@{/login}">관리자로그인</a>
+			</div>
+		</div>
+		<div class="outer-admin-box" sec:authorize="isAuthenticated()">
+			<div class="inner-admin-box text-center2">
+				<a th:href="@{/admin/menus}">메뉴수정</a>
+			</div>
+			<div class="inner-admin-box text-center2">
+				<a th:href="@{/admin/menus}">매출통계</a>
+			</div>
+			<div class="inner-admin-box text-center2">
+				<a th:href="@{/admin/members}">사용자추가</a>
+			</div>
+
+		</div>
 	</div>
 </body>
 

@@ -1,5 +1,8 @@
 body{
-	height: 1000px;
+	height: 1300px;
+}
+p{
+	font-size: 20px;
 }
 
 .menu-component{
@@ -7,9 +10,8 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    margin-top: 200px;
     width: 600px;
-    height: 700px;
+    height: 800px;
     background: white;
     box-shadow: 5px 5px 5px 5px #c4c4c4;
     border-radius: 11px;
