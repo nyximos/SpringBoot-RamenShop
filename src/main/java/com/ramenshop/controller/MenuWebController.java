@@ -55,6 +55,11 @@ public class MenuWebController {
 	public String getMenu(Model model, @PathVariable Long id) {
     	try {
 			menuService.findMenu(id).ifPresent(o -> model.addAttribute("menu", o));
+			// 메뉴 그룹 아이디 보내기
+			Long menuGroupId = menuService.findMenuGroupId(id);
+			model.addAttribute("menuGroupId", menuGroupId);
+			
+			
 			List<Option> options = menuService.findOptions(id);
 			model.addAttribute("options", options);
 		} catch (Exception e) {

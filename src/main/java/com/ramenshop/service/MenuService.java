@@ -21,6 +21,9 @@ public class MenuService {
 
 	@Autowired
 	public MenuRepository menuRepository;
+	
+	@Autowired
+	public MenuService menuService;
 
 	@Autowired
 	public MenuGroupRepository menuGroupRepository;
@@ -77,8 +80,6 @@ public class MenuService {
 		List<Menu> menus = menuRepository.findAllByIsSale(true);
 			return menus;
 	}
-	
-
 
 	public List<Option> findOptions(Long id) {
 		Optional<Menu> menu = menuRepository.findById(id);
@@ -97,6 +98,20 @@ public class MenuService {
 		}
 		
 		return options;
+	}
+
+	public Long findMenuGroupId(Long id) {
+		Optional<MenuGroup> mg;
+		try {
+			mg = menuService.findMenuGroup(menuService.findMenu(id).get().getMenuGroup().getId());
+			Long mgId = mg.get().getId();
+			return mgId;
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("이거실행");
+			return null;
+		}
+		
 	}
 
 }
