@@ -1,10 +1,13 @@
 package com.ramenshop.controller;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -60,8 +63,20 @@ public class AdminMenuApiController {
 
 			Menu menu = new Menu(name, price, discription, menuGroup, imgName, true);
 
+			
+			
 			menu.setImgUrl(filePath);
 			menuService.saveMenu(menu);
+			
+			List<Menu> m = new ArrayList<>();
+			m.add(menu);
+			
+			
+			HttpSession session = request.getSession();
+			session.setAttribute("cart", m);
+			System.out.println(session.getAttribute("cart"));
+
+			
 			response.sendRedirect("/admin/menus");
 
 			return "등록성공";
@@ -95,6 +110,10 @@ public class AdminMenuApiController {
 			menu.setDiscription(discription);
 			menu.setIsSale(booleanIsSale);
 
+			
+			HttpSession session = request.getSession();
+			System.out.println(session.getAttribute("cart"));
+			
 			System.out.println(imgFile.getSize());
 			if(imgFile.getSize() > 0) {
 				String baseDir = request.getSession().getServletContext().getRealPath("\\"); // webapp까지 경로

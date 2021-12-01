@@ -83,6 +83,16 @@
 				</div>
 			</div>
 		</div>
+		<div>
+			<table>
+				<tr>
+					<td>cart</td>
+				</tr>
+				<tr th:each="c : ${cart}">
+					<td th:text="${c.name}"></td>
+				</tr>
+			</table>
+		</div>
 	</div>
 
 	<script>

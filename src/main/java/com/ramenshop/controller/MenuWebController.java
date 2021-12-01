@@ -26,6 +26,7 @@ public class MenuWebController {
 	@GetMapping("/menus")
 	public String getMenus(Model model) {
 		List<Menu> menus = menuService.findAllByIsSale(true);
+		
 		model.addAttribute("menus", menus);
         return "menus";
 	}

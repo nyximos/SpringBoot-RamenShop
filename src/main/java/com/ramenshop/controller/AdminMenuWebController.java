@@ -1,7 +1,10 @@
 package com.ramenshop.controller;
 
+import java.net.http.HttpRequest;
 import java.util.List;
 import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,9 +31,12 @@ public class AdminMenuWebController {
 
 	
 	@GetMapping("/admin/menus")
-    public String list(Model model) {
+    public String list(Model model,HttpServletRequest request) {
 		List<Menu> menus = menuService.findMenus();
 		model.addAttribute("menus", menus);
+		
+		
+		model.addAttribute("cart", request.getSession().getAttribute("cart"));
         return "admin-menus";
     }
 	@GetMapping("/admin/menus/group/{id}")
