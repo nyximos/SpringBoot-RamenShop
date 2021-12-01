@@ -20,6 +20,12 @@ body{
 ul, dl,dt,dd {margin:0;padding:0;list-style:none}
 a {color:#000;text-decoration:none}
 
+div,
+input,
+textarea {
+	box-sizing: border-box;
+}
+
 .header{width:100%; background: sandybrown; margin-bottom: 100px}
 
 .header .header-box{overflow: hidden; padding: 0px 10px;}

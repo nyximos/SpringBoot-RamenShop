@@ -34,7 +34,7 @@ p{
 
 .option-info{
 	height: 45%;
-	background-color: lightsalmon;
+	background-color: peachpuff;
 }
 
 .btn-box{
@@ -81,4 +81,50 @@ p{
 	padding: 20px;
 	text-align: center;
 
+}
+
+
+.form-white {
+	background-color: white;
+	padding: 30px;
+	width: 80%;
+	max-width: 600px;
+	margin: auto;
+}
+.form-input {
+	/* 실제 width는 100%+ 20px  그래서 box-sizing을 border-box로 해야댐*/
+	width: 100%;
+	padding: 10px;
+	font-size: 20px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.w-100 {
+	width: 100%;
+	padding: 10px;
+	/* w-50 이랑 간격 맞출라면 패딩 똑같이 */
+}
+
+.w-50 {
+	width: 50%;
+	float: left;
+	padding: 10px;
+}
+
+.clear {
+	clear: both;
+}
+
+.yellow-button {
+	display: block;
+	margin-left: auto;
+	/* margin-right: auto; */
+	background-color: orange;
+	color: white;
+	font-size: 15px;
+	padding: 10px;
+	width: 100px;
+	border: 0;
+	border-radius: 5px;
 }
