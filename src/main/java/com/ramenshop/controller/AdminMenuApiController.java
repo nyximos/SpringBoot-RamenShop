@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +25,8 @@ import com.ramenshop.data.MenuGroup;
 import com.ramenshop.repository.MenuRepository;
 import com.ramenshop.service.MenuService;
 
-@RestController("/api")
+@RestController
+@RequestMapping("/api")
 public class AdminMenuApiController {
 
 	@Autowired
