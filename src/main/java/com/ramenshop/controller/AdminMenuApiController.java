@@ -30,12 +30,9 @@ public class AdminMenuApiController {
 	@Autowired
 	MenuService menuService;
 
-	// String name, int price, String discription, String imgUrl, Menugroup
-	// menuGroupId
 	
-	// 등록
-	
-	@PostMapping("/admin/edit")
+	// 메뉴 등록
+	@PostMapping("/admin/menus/post")
 	public String postMenu(@RequestParam(name = "name") String name, @RequestParam(name = "price") int price,
 			@RequestParam(name = "discription") String discription,
 			@RequestParam(name = "imgFile") MultipartFile imgFile,
@@ -72,9 +69,8 @@ public class AdminMenuApiController {
 
 	}
 	
-	// 수정
-
-	@PostMapping("/admin/edit/{id}")
+	// 메뉴 수정
+	@PostMapping("/admin/menus/{id}")
 	public String putMenu(
 			@PathVariable(name = "id") Long id,
 			@RequestParam(name = "name") String name, @RequestParam(name = "price") int price,
