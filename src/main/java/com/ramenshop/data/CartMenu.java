@@ -40,5 +40,7 @@ public class CartMenu {
 		this.price = price;
 	}
 
+
+
 	
 }

@@ -22,8 +22,10 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ramenshop.data.CartMenu;
 import com.ramenshop.data.Menu;
 import com.ramenshop.data.MenuGroup;
+import com.ramenshop.data.Option;
 import com.ramenshop.repository.MenuRepository;
 import com.ramenshop.service.MenuService;
 
@@ -62,19 +64,47 @@ public class AdminMenuApiController {
 			String imgName = imgFile.getOriginalFilename();
 
 			Menu menu = new Menu(name, price, discription, menuGroup, imgName, true);
-
-			
-			
 			menu.setImgUrl(filePath);
 			menuService.saveMenu(menu);
+
+			String A = "a";
+			long a = 1;
+			long b = 2;
+			long c = 3;
+			Option o1 = new Option();
+			Option o2 = new Option();
+			Option o3 = new Option();
+			o1.setId(a);
+			o2.setId(b);
+			o3.setId(c);
+			List<Option> ol = new ArrayList();
+			ol.add(o1);
+			ol.add(o2);
+			ol.add(o3);
 			
-			List<Menu> m = new ArrayList<>();
-			m.add(menu);
 			
 			
+			CartMenu C = new CartMenu(A,ol,1000);
+
 			HttpSession session = request.getSession();
-			session.setAttribute("cart", m);
-			System.out.println(session.getAttribute("cart"));
+			System.out.println("넣기전"+session.getAttribute("cart"));
+
+			if(session.getAttribute("cart")!=null) {
+				List<CartMenu> m1 = (List<CartMenu>) session.getAttribute("cart");
+				m1.add(C);
+				session.setAttribute("cart", m1);
+				System.out.println("생성후");
+
+			}else {
+				List<CartMenu> m = new ArrayList<>();
+				m.add(C);
+				session.setAttribute("cart", m);
+				System.out.println("생성전");
+
+			}		
+			
+			
+			System.out.println("넣기후"+session.getAttribute("cart"));
 
 			
 			response.sendRedirect("/admin/menus");
