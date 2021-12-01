@@ -20,6 +20,10 @@ public class AdminMenuWebController {
 	
 	@Autowired
 	MenuService menuService;
+	
+	public AdminMenuWebController(MenuService menuService) {
+		this.menuService = menuService;
+	}
 
 	//**어드민 메뉴 페이지**
 	@GetMapping("/admin/menus")

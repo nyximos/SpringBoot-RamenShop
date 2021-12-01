@@ -1,30 +1,88 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta charset="UTF-8">
-	<title>menus</title>
+	<title>Ramen shop - 메뉴보기</title>
+	<link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='/css/main.css'>
+	<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
 </head>
+
 <body>
-	<h1>menus</h1>
-	<table>
-	<thead>
-	<tr>
-		<th>id</th>
-		<th>name</th>
-		<th>price</th>
-		<th>img</th>
-		<th>dis</th>
-	</tr>
-	</thead>
-	<tbody>
-		<tr th:each="menu: ${menus}">
-			<td th:text="${menu.getId()}"></td>
-			<td th:text="${menu.getName()}"></td>
-			<td th:text="${menu.getPrice()}"></td>
-			<td><img th:src="@{/imgs/}+${menu.getImgUrl()}"></td>
-			<td th:text="${menu.getDiscription()}"></td>
-		</tr>
-	</tbody>
-</table>
+	<header th:insert="header.html"></header>
+	<div class="container">
+		<div class="left">
+			<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+				<button type="button" class="btn btn-light" onclick="location.href='/menus'">전체보기</button>
+				<button type="button" class="btn1 btn-menugroup btn btn-danger"
+					onclick="location.href='/menus/group/1'">면</button>
+				<button type="button" class="btn2 btn-menugroup btn btn-warning"
+					onclick="location.href='/menus/group/2'">밥</button>
+				<button type="button" class="btn3 btn-menugroup btn btn-success"
+					onclick="location.href='/menus/group/3'">사이드</button>
+				<button type="button" class="btn4 btn-menugroup btn btn-primary"
+					onclick="location.href='/menus/group/4'">음료</button>
+			</div>
+			<div class="content">
+				<table>
+					<thead class="thead-light">
+						<tr class="text-center">
+							<th scope="col">이미지</th>
+							<th scope="col">메뉴명</th>
+							<th scope="col">가격</th>
+							<th scope="col">설명</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr class="text-center menu-object" th:each="menu : ${menus}"
+							th:onclick="'location.href=\''+ @{/menus/{id}(id=${menu.id})} + '\''">
+							<td scope="row" width="20%">
+								<div><img th:src="@{/imgs/}+${menu.imgName}"></div>
+							</td>
+							<td scope="row" width="25%">
+								<div th:text="${menu.name}"></div>
+							</td>
+							<td scope="row" width="15%">
+								<div th:text="${menu.price}"></div>
+							</td>
+							<td scope="row" width="40%">
+								<div th:text="${menu.discription}"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="right">
+				<div class="row quickmenu">
+					<div class="cart">
+						<div class="col-auto mr-auto"></div>
+						<div class="col-auto">
+							<a class="btn btn-outline-warning btn-lg" th:href="@{/menus}" role="button">메뉴보기</a>
+						</div>
+					</div>
+					<div class="cart">
+						<div class="col-auto mr-auto"></div>
+						<div class="col-auto">
+							<a class="btn btn-outline-warning btn-lg" th:href="@{/menus/cart}" role="button">장바구니</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+		<script>
+		$(window).scroll(function () {  //스크롤이 움직일때마다 이벤트 발생 
+			let position = $(window).scrollTop()+200; // 현재 스크롤바의 위치값을 반환합니다.
+			$('.quickmenu').stop().animate({top: position + "px"}, 1000); //해당 오브젝트 위치값 재설정
+		});
+	</script>
+
 </body>
+
 </html>

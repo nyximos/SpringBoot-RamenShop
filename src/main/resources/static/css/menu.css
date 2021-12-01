@@ -1,0 +1,130 @@
+body{
+	height: 1920px;
+}
+p{
+	font-size: 20px;
+}
+
+.menu-component{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 1400px;
+    background: white;
+    box-shadow: 5px 5px 5px 5px #c4c4c4;
+    border-radius: 11px;
+}
+.menu-box{
+	padding: 15% 15%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background-color: powderblue;
+}
+
+.menu-info{
+	width: 80%;
+	height: 35%;
+	background-color: lavender;
+}
+
+.option-info{
+	height: 45%;
+	background-color: peachpuff;
+}
+
+.btn-box{
+	padding: 30px;
+	width: 400px;
+	height: 15%;
+	background-color: palegoldenrod;
+}
+
+.btn-box div{
+	float: left;
+	height: 100%;
+	line-height: 100px;
+	width: 50%;
+	padding: 10px;
+	text-align: center;
+	background-color: lightpink;
+
+}
+
+.option-box{
+	padding:15px;
+	font-size: 20px;
+}
+
+
+.menu-title{
+	text-align: center;
+    font-size: 30px;
+    color: #ec7676;
+    padding: 10px;
+}
+
+.menu-img{
+	padding:10px;
+}
+
+.menu-price{
+	padding: 20px;
+	text-align: center;
+
+}
+ .menu-discription{
+	padding: 20px;
+	text-align: center;
+
+}
+
+
+.form-white {
+	background-color: white;
+	padding: 30px;
+	width: 80%;
+	max-width: 600px;
+	margin: auto;
+}
+.form-input {
+	/* 실제 width는 100%+ 20px  그래서 box-sizing을 border-box로 해야댐*/
+	width: 100%;
+	padding: 10px;
+	font-size: 20px;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.w-100 {
+	width: 100%;
+	padding: 10px;
+	/* w-50 이랑 간격 맞출라면 패딩 똑같이 */
+}
+
+.w-50 {
+	width: 50%;
+	float: left;
+	padding: 10px;
+}
+
+.clear {
+	clear: both;
+}
+
+.yellow-button {
+	display: block;
+	margin-left: auto;
+	/* margin-right: auto; */
+	background-color: orange;
+	color: white;
+	font-size: 15px;
+	padding: 10px;
+	width: 100px;
+	border: 0;
+	border-radius: 5px;
+}

@@ -1,0 +1,11 @@
+<div class="option-info">
+	<div class="option-box" th:each="option : ${options}">
+		<div class="form-check">
+			<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+				th:if="${option.id}">
+			<label class="form-check-label" for="flexCheckDefault" th:text="${option.name}">
+				Default checkbox
+			</label>
+		</div>
+	</div>
+</div>

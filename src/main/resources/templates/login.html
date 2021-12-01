@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 	<meta charset="UTF-8">
-	<title>login</title>
+	<title>Ramen shop</title>
+	<link rel='stylesheet' href='/webjars/bootstrap/4.5.0/css/bootstrap.min.css'>
+	<link rel='stylesheet' href='/css/main.css'>
+
 </head>
 
+
 <body>
+	<header th:insert="admin-header.html"></header>
 	<h1>login</h1>
 	<section>
 		<div th:if="${param.error}">Failed. Check username and password.</div>

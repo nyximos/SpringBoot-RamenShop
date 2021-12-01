@@ -9,7 +9,7 @@
 </head>
 
 <body>
-	<header th:insert="header.html"></header>
+	<header th:insert="admin-header.html"></header>
 	<div class="container">
 		<div class="form-box">
 			<form th:action="@{'/admin/menus/{id}'(id=${menu.id})}" method="post" enctype="multipart/form-data">
