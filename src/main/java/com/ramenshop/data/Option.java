@@ -40,6 +40,13 @@ public class Option {
 	@OneToMany(mappedBy="option")
 	private List<OrderMenuOption> orderMenuOptions = new ArrayList<>();
 
+	Option(){}
+	
+	public Option(Long id) {
+		super();
+		this.id = id;
+	}
+
 	public Long getId() {
 		return id;
 	}
