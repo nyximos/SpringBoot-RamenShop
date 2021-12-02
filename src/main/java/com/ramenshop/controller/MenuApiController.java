@@ -40,6 +40,7 @@ public class MenuApiController {
 				@PathVariable(name = "id") Long id,
 				@RequestParam(name = "spicy") String spicy,
 				@RequestParam(name = "count") int count,
+				@RequestParam(name = "total") int total,
 				HttpServletRequest request,
 				HttpServletResponse response
 				) {
@@ -57,12 +58,10 @@ public class MenuApiController {
 				Option o;
 				for(int i=0; i<topings.length; i++) {
 					ol.add(o = optionRepository.findById(Long.parseLong(topings[i])).get());
-					price+=o.getPrice();
 				}
-				price = price*count;
 				
 				
-				CartMenu C = new CartMenu(menu,ol,price,count);
+				CartMenu C = new CartMenu(menu,ol,total,count);
 
 				HttpSession session = request.getSession();
 				
