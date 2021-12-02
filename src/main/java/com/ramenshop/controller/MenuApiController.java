@@ -38,7 +38,6 @@ public class MenuApiController {
 		public String putMenu(
 				@PathVariable(name = "id") Long id,
 				@RequestParam(name = "spicy") String spicy,
-//				@nullable @RequestParam(name = "price") int price,
 				HttpServletRequest request,
 				HttpServletResponse response
 				) {
