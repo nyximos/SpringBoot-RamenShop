@@ -243,6 +243,7 @@
 		var count = $('#numBox').val();
 
 		var total = result;
+		var one = result;
 
 		var topingCount;
 		var topingTotalPrice;
@@ -266,7 +267,8 @@
 		function addToping() {
 			$("input:checkbox[name='double']:checked").on("change", function () {
 				topingCount=($("input:checkbox[name='double']:checked").length);
-				total = result + 1000*topingCount;
+				one = result + 1000*topingCount;
+				total = one * count;
 				$('input[name=total]').attr('value', total);
 			});
 		}
@@ -274,23 +276,21 @@
 
 
 		$(".plus").click(function () {
-			var num = $(".numBox").val();
-			var plusNum = Number(num) + 1;
-			$(".numBox").val(plusNum);
-			total = total * plusNum;
+			count = Number(count) + 1;
+			$(".numBox").val(count);
+			total = one * count;
 			$('input[name=total]').attr('value', total);
 
 		});
 
 		$(".minus").click(function () {
-			var num = $(".numBox").val();
-			var minusNum = Number(num) - 1;
-
-			if (minusNum <= 0) {
-				$(".numBox").val(num);
+			if (count-1 < 1) {
+				alert("수량은 최소 하나 선택해주세요!");
 			} else {
-				$(".numBox").val(minusNum);
-				total = total / num;
+				var beforeCount = count;
+				count = Number(count) - 1;
+				$(".numBox").val(count);
+				total = total / beforeCount * count;
 				$('input[name=total]').attr('value', total);
 			}
 		});
