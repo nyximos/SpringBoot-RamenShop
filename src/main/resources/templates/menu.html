@@ -25,81 +25,93 @@
 				<div class="option-info" th:if="${menuGroupId.toString().equals('1')}">
 					<div class="option-box">
 						<form th:action="@{'/api/menus/{id}'(id=${menu.id})}" method="post">
-							<div class="w-100">
+							<div class="w-100 mgb10">
 								<p>맛</p>
 								<div class="w-50">
 									<label>
-										<input type="radio" name="spicy" value="2" class="form-radio" />
+										<input type="radio" name="spicy" value="1" class="form-radio" />
 										보통맛</<label>
 								</div>
 								<div class="w-50">
 									<label>
-										<input type="radio" name="spicy" value="3" class="form-radio" />
+										<input type="radio" name="spicy" value="2" class="form-radio" />
 										매운맛</<label>
 								</div>
 							</div>
 
-
-							<div class="w-100">
+							<div class="w-100 mgb10">
 								<p>추가 선택</p>
-								<div class="w-100">
-									<label>
-										<input type="checkbox" name="double" value="4" class="form-checkbox" />
-										곱빼기 추가</<label><span> +1000원</span>
+								<div>
+									<div class="w-100">
+										<label>
+											<input type="checkbox" name="double" value="5" class="form-checkbox"
+												onclick='addToping()' />
+											곱빼기 추가</<label><span> +1000원</span>
+									</div>
+									<div class="w-100">
+										<label>
+											<input type="checkbox" name="double" value="7" class="form-checkbox"
+												onclick='addToping()' />
+											삶은 계란 추가</<label><span> +1000원</span>
+									</div>
+									<div class="w-100">
+										<label>
+											<input type="checkbox" name="double" value="8" class="form-checkbox"
+												onclick='addToping()' />
+											날계란 추가</<label><span> +1000원</span>
+									</div>
+									<div class="w-100">
+										<label>
+											<input type="checkbox" name="double" value="9" class="form-checkbox"
+												onclick='addToping()' />
+											야채튀김 추가</<label><span> +1000원</span>
+									</div>
+									<div class="w-100">
+										<label>
+											<input type="checkbox" name="double" value="11" class="form-checkbox"
+												onclick='addToping()' />
+											새우튀김 추가</<label><span> +1000원</span>
+									</div>
+									<div class="w-100">
+										<label>
+											<input type="checkbox" name="double" value="13" class="form-checkbox"
+												onclick='addToping()' />
+											치킨 가라아게 추가<label><span> +1000원</span>
+									</div>
+									<div class="w-100">
+										<label>
+											<input type="checkbox" name="double" value="15" class="form-checkbox"
+												onclick='addToping()' />
+											돈까스 추가</<label><span> +1000원</span>
+									</div>
 								</div>
-								<div class="w-100">
-									<label>
-										<input type="checkbox" name="double" value="5" class="form-checkbox" />
-										삶은 계란 추가</<label><span> +1000원</span>
-								</div>
-								<div class="w-100">
-									<label>
-										<input type="checkbox" name="double" value="6" class="form-checkbox" />
-										날계란 추가</<label><span> +1000원</span>
-								</div>
-								<div class="w-100">
-									<label>
-										<input type="checkbox" name="double" value="7" class="form-checkbox" />
-										야채튀김 추가</<label><span> +1000원</span>
-								</div>
-								<div class="w-100">
-									<label>
-										<input type="checkbox" name="double" value="8" class="form-checkbox" />
-										새우튀김 추가</<label><span> +1000원</span>
-								</div>
-								<div class="w-100">
-									<label>
-										<input type="checkbox" name="double" value="9" class="form-checkbox" />
-										치킨 가라아게 추가</<label>><span> +1000원</span>
-								</div>
-								<div class="w-100">
-									<label>
-										<input type="checkbox" name="double" value="10" class="form-checkbox" />
-										돈까스 추가</<label><span> +1000원</span>
-								</div>
+								<div class="clear"></div>
 							</div>
 
 
 							<div class="clear"></div>
-
 							<div>
-								<div class="cartStock">
-									<button type="button" class="plus">+</button>
+								<div class="cartStock mgb10" style="margin-right: 50px;">
 									<span>구입 수량</span>
-									<input type="number" name="count" class="numBox" value="1" />
-									<button type="button" class="minus">-</button>
+									<button type="button" class="minus numBtn">-</button>
+									<input type="number" id="numBox" class="numBox" value="1" />
+									<button type="button" class="plus numBtn">+</button>
+
+									<div class="clear"></div>
 
 								</div>
 								<div class="total">
-									<div>총 금액</div>
-									<div> <input type="text" class="form-input" readonly="readonly" />
+									<div class="left">총 금액</div>
+									<div class="right"> <input type="text" class="form-input" name="total"
+											readonly="readonly" />
 										원</div>
+									<div class="clear"></div>
 								</div>
+
 							</div>
 							<div class="btn-box">
 								<div th:onclick="'location.href=\''+ @{/menus} + '\''">취소</div>
 								<div><button class="yellow-button">담기</button></div>
-								<input type="submit" value="담기">
 							</div>
 						</form>
 					</div>
@@ -111,13 +123,13 @@
 								<p>맛</p>
 								<div class="w-50">
 									<label>
-										<input type="radio" name="spicy" value="0" class="form-radio" />
+										<input type="radio" name="spicy" value="3" class="form-radio" />
 										보통맛</label>
 
 								</div>
 								<div class="w-50">
 									<label>
-										<input type="radio" name="spicy" value="1" class="form-radio" />
+										<input type="radio" name="spicy" value="4" class="form-radio" />
 										매운맛</label>
 								</div>
 							</div>
@@ -127,44 +139,49 @@
 								<p>추가 선택</p>
 								<div class="w-100">
 									<label>
-										<input type="checkbox" name="double" value="1" class="form-checkbox" />
+										<input type="checkbox" name="double" value="6" class="form-checkbox" />
 										곱빼기 추가</label><span> +1000원</span>
 								</div>
 								<div class="w-100">
 									<label>
-										<input type="checkbox" name="double" value="1" class="form-checkbox" />
+										<input type="checkbox" name="double" value="10" class="form-checkbox" />
 										야채튀김 추가</label><span> +1000원</span>
 								</div>
 								<div class="w-100">
 									<label>
-										<input type="checkbox" name="double" value="1" class="form-checkbox" />
+										<input type="checkbox" name="double" value="12" class="form-checkbox" />
 										새우튀김 추가</label><span> +1000원</span>
 								</div>
 								<div class="w-100">
 									<label>
-										<input type="checkbox" name="double" value="1" class="form-checkbox" />
+										<input type="checkbox" name="double" value="14" class="form-checkbox" />
 										치킨 가라아게 추가</label><span> +1000원</span>
 								</div>
 								<div class="w-100">
 									<label>
-										<input type="checkbox" name="double" value="1" class="form-checkbox" />
+										<input type="checkbox" name="double" value="16" class="form-checkbox" />
 										돈까스 추가</label><span> +1000원</span>
 								</div>
 							</div>
 							<div class="clear"></div>
 							<div>
-								<div class="cartStock">
-									<button type="button" class="plus">+</button>
+								<div class="cartStock mgb10" style="margin-right: 50px;">
 									<span>구입 수량</span>
-									<input type="number" class="numBox" value="1" />
-									<button type="button" class="minus">-</button>
+									<button type="button" class="minus numBtn">-</button>
+									<input type="number" id="numBox" class="numBox" value="1" />
+									<button type="button" class="plus numBtn">+</button>
+
+									<div class="clear"></div>
 
 								</div>
 								<div class="total">
-									<div>총 금액</div>
-									<div> <input type="text" class="form-input" readonly="readonly" />
+									<div class="left">총 금액</div>
+									<div class="right"> <input type="text" class="form-input" name="total"
+											readonly="readonly" />
 										원</div>
+									<div class="clear"></div>
 								</div>
+
 							</div>
 
 							<div class="btn-box">
@@ -177,18 +194,23 @@
 				<div class="option-info"
 					th:if="${menuGroupId.toString().equals('3')} or ${menuGroupId.toString().equals('4')}">
 					<div>
-						<div class="cartStock">
-							<button type="button" class="plus">+</button>
+						<div class="cartStock mgb10" style="margin-right: 50px;">
 							<span>구입 수량</span>
-							<input type="number" class="numBox" value="1" />
-							<button type="button" class="minus">-</button>
+							<button type="button" class="minus numBtn">-</button>
+							<input type="number" id="numBox" class="numBox" value="1" />
+							<button type="button" class="plus numBtn">+</button>
+
+							<div class="clear"></div>
 
 						</div>
 						<div class="total">
-							<div>총 금액</div>
-							<div> <input type="text" class="form-input" readonly="readonly" />
+							<div class="left">총 금액</div>
+							<div class="right"> <input type="text" class="form-input" name="total"
+									readonly="readonly" />
 								원</div>
+							<div class="clear"></div>
 						</div>
+
 					</div>
 					<div class="btn-box">
 						<div th:onclick="'location.href=\''+ @{/menus} + '\''">취소</div>
@@ -202,8 +224,7 @@
 
 	<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
 	<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-
-
+	<script src="/js/calculate.js"></script>
 
 	<script>
 		$(window).scroll(function () {  //스크롤이 움직일때마다 이벤트 발생 
@@ -212,11 +233,53 @@
 		});
 	</script>
 
-	<script>
+
+	<script th:inline="javascript">
+
+
+
+		/*<![CDATA[*/
+
+		var result = /*[[ ${menu.price} ]]*/'';
+		var count = $('#numBox').val();
+
+		var total = result;
+
+		var topingCount;
+		var topingTotalPrice;
+
+
+		$(document).ready(function () {
+
+			$('input[name=total]').attr('value', result);
+
+
+			$('.numBox').on("change", function () {
+				count = $('#numBox').val();
+				total = result * count;
+				$('input[name=total]').attr('value', total);
+			});
+
+
+
+		});
+
+		function addToping() {
+			$("input:checkbox[name='double']:checked").on("change", function () {
+				topingCount=($("input:checkbox[name='double']:checked").length);
+				total = result + 1000*topingCount;
+				$('input[name=total]').attr('value', total);
+			});
+		}
+		/*]]*/
+
+
 		$(".plus").click(function () {
 			var num = $(".numBox").val();
 			var plusNum = Number(num) + 1;
 			$(".numBox").val(plusNum);
+			total = total * plusNum;
+			$('input[name=total]').attr('value', total);
 
 		});
 
@@ -228,6 +291,8 @@
 				$(".numBox").val(num);
 			} else {
 				$(".numBox").val(minusNum);
+				total = total / num;
+				$('input[name=total]').attr('value', total);
 			}
 		});
 	</script>

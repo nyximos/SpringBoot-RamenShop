@@ -19,9 +19,6 @@ public class OrderMenuOption {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable=false)
-	private int count=1;
-	
 	@ManyToOne(fetch = FetchType.LAZY,targetEntity=Option.class)
 	@JoinColumn(name="option_id")
 	private Option option;
@@ -36,14 +33,6 @@ public class OrderMenuOption {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public int getCount() {
-		return count;
-	}
-
-	public void setCount(int count) {
-		this.count = count;
 	}
 
 	public Option getOption() {
