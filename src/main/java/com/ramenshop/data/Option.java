@@ -37,7 +37,7 @@ public class Option {
 	@JoinColumn(name="option_group_id")
 	private OptionGroup optionGroup;
 	
-	@OneToMany(mappedBy="option")
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="option")
 	private List<OrderMenuOption> orderMenuOptions = new ArrayList<>();
 
 	Option(){}

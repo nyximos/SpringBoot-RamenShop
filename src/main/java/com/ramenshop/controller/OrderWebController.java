@@ -107,6 +107,7 @@ public class OrderWebController {
 
 				}
 				catch (Exception e){
+					System.out.println(e);
 					System.out.print("에러");
 				}
 				
