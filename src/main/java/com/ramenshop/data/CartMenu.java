@@ -6,15 +6,17 @@ public class CartMenu {
 	Menu menu;
 	List<Option> options;
 	int price;
+	int count;
 	
 	CartMenu(){}
 
 	
-	public CartMenu(Menu menu, List<Option> options, int price) {
+	public CartMenu(Menu menu, List<Option> options, int price, int count) {
 		super();
 		this.menu = menu;
 		this.options = options;
 		this.price = price;
+		this.count = count;
 	}
 
 
@@ -40,6 +42,16 @@ public class CartMenu {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+
+	public int getCount() {
+		return count;
+	}
+
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 	

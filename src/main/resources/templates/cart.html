@@ -26,6 +26,7 @@
 					<td th:text="${c.options[9].name}" th:if="${c.options.size>9}"></td>
 					<td th:text="${c.options[10].name}" th:if="${c.options.size>10}"></td>
 					
+					<td th:text=="|${c.count}개|"></td>
 					<td th:text=="|${c.price}원|"></td>
 				</tr>
 			</table>
