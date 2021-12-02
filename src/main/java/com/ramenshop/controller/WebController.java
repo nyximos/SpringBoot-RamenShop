@@ -1,6 +1,7 @@
 package com.ramenshop.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.Cookie;
@@ -12,10 +13,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.ramenshop.data.CartMenu;
 import com.ramenshop.data.Menu;
 import com.ramenshop.service.MenuService;
 
@@ -68,14 +71,29 @@ public class WebController {
 		return "sales";
 	}
 	*/
+	
 	@GetMapping("/cart")
 	public String getMenus(Model model,HttpServletRequest request) {
-		List<Menu> menus = menuService.findAllByIsSale(true);
-		model.addAttribute("menus", menus);
 		
 		model.addAttribute("cart",request.getSession().getAttribute("cart"));
         return "cart";
 	}
 
+	//장바구니 메뉴 삭제
+    @PostMapping("/menus/delete/{id}")
+    public String delSessionList(
+    		@PathVariable int id,
+    		Model model,
+    		HttpServletRequest request,
+    		HttpServletResponse response
+    		) {	    	
+			System.out.println("in");
+			List<CartMenu> m1 = (List<CartMenu>)request.getSession().getAttribute("cart");
+			System.out.println(m1.size());
+			m1.remove(id);
+			model.addAttribute("cart",m1);
+    	System.out.println("out");
+        return "cart";
+    }
 	
 }

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,6 +39,7 @@ public class MenuApiController {
 		public String putMenu(
 				@PathVariable(name = "id") Long id,
 				@RequestParam(name = "spicy") String spicy,
+				@RequestParam(name = "count") int count,
 				HttpServletRequest request,
 				HttpServletResponse response
 				) {
@@ -57,10 +59,10 @@ public class MenuApiController {
 					ol.add(o = optionRepository.findById(Long.parseLong(topings[i])).get());
 					price+=o.getPrice();
 				}
+				price = price*count;
 				
 				
-				
-				CartMenu C = new CartMenu(menu,ol,price);
+				CartMenu C = new CartMenu(menu,ol,price,count);
 
 				HttpSession session = request.getSession();
 				
@@ -83,32 +85,6 @@ public class MenuApiController {
 				
 				System.out.println("넣기후"+session.getAttribute("cart"));
 				
-//				Boolean booleanIsSale = Boolean.parseBoolean(isSale);	
-//				Menu menu = menuService.findMenu(id).get();
-//				menu.setName(name);
-//				menu.setPrice(price);
-//				menu.setDiscription(discription);
-//				menu.setIsSale(booleanIsSale);
-//
-//				System.out.println(imgFile.getSize());
-//				if(imgFile.getSize() > 0) {
-//					String baseDir = request.getSession().getServletContext().getRealPath("\\"); // webapp까지 경로
-//					System.out.println(baseDir);
-//					String filePath = baseDir + "\\imgs\\" + imgFile.getOriginalFilename();
-//					imgFile.transferTo(new File(filePath)); // 해당 경로에 이미지 파일 저장
-//					
-//					
-//					
-//					String imgName = imgFile.getOriginalFilename();
-//					menu.setImgName(imgName);
-//					menu.setImgUrl(filePath);
-//				}
-//				
-//				menu.setMenuGroup(menuService.findMenuGroup(Long.parseLong(menuGroupId)).get());
-//
-//				menuService.saveMenu(menu);
-//
-//				
 				response.sendRedirect("/menus");
 
 				return "등록성공";
@@ -118,6 +94,22 @@ public class MenuApiController {
 			}
 
 		}
+
+		//장바구니 메뉴 삭제
+	    @PostMapping("/menus/delete/{id}")
+	    public String delSessionList(
+	    		@PathVariable Long id,
+	    		Model model,
+	    		HttpServletRequest request
+	    		) {	    	
+	    	System.out.println("in");
+	    	List<CartMenu> m1 = (List<CartMenu>)request.getSession().getAttribute("cart");
+	    	m1.remove(id);
+			model.addAttribute("cart",m1);
+
+	    	
+	        return "cart";
+	    }
 
 	
 }
