@@ -68,11 +68,34 @@
 					<div class="cart">
 						<div class="col-auto mr-auto"></div>
 						<div class="col-auto">
-							<a class="btn btn-outline-warning btn-lg" th:href="@{/menus/cart}" role="button">장바구니</a>
+							<a class="btn btn-outline-warning btn-lg" th:href="@{/cart}" role="button">장바구니</a>
 						</div>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div>
+			<table>
+				<tr>
+					<td>cart</td>
+				</tr>
+				<tr th:each="c : ${cart}">
+					<td th:text="${c.menu.name}"></td>
+
+					<td th:text="${c.options[0].id}"></td>
+					<td th:text="${c.options[1].id}" th:if="${c.options.size>1}"></td>
+					<td th:text="${c.options[2].id}" th:if="${c.options.size>2}"></td>
+					<td th:text="${c.options[3].id}" th:if="${c.options.size>3}"></td>
+					<td th:text="${c.options[4].id}" th:if="${c.options.size>4}"></td>
+					<td th:text="${c.options[5].id}" th:if="${c.options.size>5}"></td>
+					<td th:text="${c.options[6].id}" th:if="${c.options.size>6}"></td>
+					<td th:text="${c.options[7].id}" th:if="${c.options.size>7}"></td>
+					<td th:text="${c.options[8].id}" th:if="${c.options.size>8}"></td>
+					<td th:text="${c.options[9].id}" th:if="${c.options.size>9}"></td>
+					<td th:text="${c.options[10].id}" th:if="${c.options.size>10}"></td>
+				
+				</tr>
+			</table>
 		</div>
 	</div>
 	

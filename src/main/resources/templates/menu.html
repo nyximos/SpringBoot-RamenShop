@@ -24,17 +24,17 @@
 				</div>
 				<div class="option-info" th:if="${menuGroupId.toString().equals('1')}">
 					<div class="option-box">
-						<form>
+						<form th:action="@{'/api/menus/{id}'(id=${menu.id})}" method="post">
 							<div class="w-100">
 								<p>맛</p>
 								<div class="w-50">
 									<label>
-										<input type="radio" name="spicy" value="0" class="form-radio" />
+										<input type="radio" name="spicy" value="2" class="form-radio" />
 										보통맛</<label>
 								</div>
 								<div class="w-50">
 									<label>
-										<input type="radio" name="spicy" value="1" class="form-radio" />
+										<input type="radio" name="spicy" value="3" class="form-radio" />
 										매운맛</<label>
 								</div>
 							</div>
@@ -44,37 +44,37 @@
 								<p>추가 선택</p>
 								<div class="w-100">
 									<label>
-										<input type="checkbox" name="double" value="1" class="form-checkbox" />
+										<input type="checkbox" name="double" value="4" class="form-checkbox" />
 										곱빼기 추가</<label><span> +1000원</span>
 								</div>
 								<div class="w-100">
 									<label>
-										<input type="checkbox" name="double" value="1" class="form-checkbox" />
+										<input type="checkbox" name="double" value="5" class="form-checkbox" />
 										삶은 계란 추가</<label><span> +1000원</span>
 								</div>
 								<div class="w-100">
 									<label>
-										<input type="checkbox" name="double" value="1" class="form-checkbox" />
+										<input type="checkbox" name="double" value="6" class="form-checkbox" />
 										날계란 추가</<label><span> +1000원</span>
 								</div>
 								<div class="w-100">
 									<label>
-										<input type="checkbox" name="double" value="1" class="form-checkbox" />
+										<input type="checkbox" name="double" value="7" class="form-checkbox" />
 										야채튀김 추가</<label><span> +1000원</span>
 								</div>
 								<div class="w-100">
 									<label>
-										<input type="checkbox" name="double" value="1" class="form-checkbox" />
+										<input type="checkbox" name="double" value="8" class="form-checkbox" />
 										새우튀김 추가</<label><span> +1000원</span>
 								</div>
 								<div class="w-100">
 									<label>
-										<input type="checkbox" name="double" value="1" class="form-checkbox" />
+										<input type="checkbox" name="double" value="9" class="form-checkbox" />
 										치킨 가라아게 추가</<label>><span> +1000원</span>
 								</div>
 								<div class="w-100">
 									<label>
-										<input type="checkbox" name="double" value="1" class="form-checkbox" />
+										<input type="checkbox" name="double" value="10" class="form-checkbox" />
 										돈까스 추가</<label><span> +1000원</span>
 								</div>
 							</div>
@@ -99,13 +99,14 @@
 							<div class="btn-box">
 								<div th:onclick="'location.href=\''+ @{/menus} + '\''">취소</div>
 								<div><button class="yellow-button">담기</button></div>
+								<input type="submit" value="담기">
 							</div>
 						</form>
 					</div>
 				</div>
 				<div class="option-info" th:if="${menuGroupId.toString().equals('2')}">
 					<div class="option-box">
-						<form>
+						<form th:action="@{'api/menus/{id}'(id=${menu.id})}" method="post">
 							<div class="w-100">
 								<p>맛</p>
 								<div class="w-50">

@@ -3,11 +3,14 @@ package com.ramenshop.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.context.support.HttpRequestHandlerServlet;
 
 import com.ramenshop.data.Menu;
 import com.ramenshop.data.Option;
@@ -24,9 +27,11 @@ public class MenuWebController {
 	MenuRepository menuRepository;
 	
 	@GetMapping("/menus")
-	public String getMenus(Model model) {
+	public String getMenus(Model model,HttpServletRequest request) {
 		List<Menu> menus = menuService.findAllByIsSale(true);
 		model.addAttribute("menus", menus);
+		
+		model.addAttribute("cart",request.getSession().getAttribute("cart"));
         return "menus";
 	}
 	
