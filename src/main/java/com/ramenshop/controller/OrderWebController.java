@@ -74,33 +74,15 @@ public class OrderWebController {
 					for (int i = 0; i < m.size(); i++) {
 						
 						OrderMenu om = new OrderMenu();
-						System.out.println("1");
 						om.setCount(m.get(i).getCount());
-						System.out.println("2");
 						om.setOrderMenuPrice(m.get(i).getPrice());
-						System.out.println(m.get(i).getMenu());
-//						try {
-//							om.setMenu(menuService.findMenu((long)6).get());
-//						} catch (Exception e) {
-//							System.out.println("3");
-//						}
-						System.out.println(m.get(i).getMenu().getPrice());
-						Menu menu = m.get(i).getMenu();
-						om.setMenu(menu);
-						System.out.println("4");
+						om.setMenu(m.get(i).getMenu());
 						om.setOrder(o);
-						System.out.println("5");
 						orderMenuRepository.save(om);
-						System.out.println("6");
 						for(int j =0; j < m.get(i).getOptions().size(); j++) {
-							System.out.println("7");
 							OrderMenuOption omo = new OrderMenuOption();
-							System.out.println("8");
 							omo.setOrderMenu(om);
-							System.out.println("9");
-							Option option = m.get(i).getOptions().get(j);
-							omo.setOption(option);
-							System.out.println("10");
+							omo.setOption(m.get(i).getOptions().get(j));
 							orderMenuOptionRepository.save(omo);
 						}
 					}
