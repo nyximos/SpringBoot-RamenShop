@@ -33,7 +33,7 @@ public class Option {
 	@Column(nullable=false, columnDefinition = "integer default 0")
 	private int max;
 	
-	@ManyToOne(fetch = FetchType.LAZY,targetEntity=OptionGroup.class)
+	@ManyToOne(fetch = FetchType.EAGER,targetEntity=OptionGroup.class)
 	@JoinColumn(name="option_group_id")
 	private OptionGroup optionGroup;
 	

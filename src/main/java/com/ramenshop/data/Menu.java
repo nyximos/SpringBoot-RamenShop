@@ -50,11 +50,11 @@ public class Menu {
 	@Column(nullable = false)
 	private boolean isSale = true;
 	
-	@ManyToOne(fetch = FetchType.LAZY,targetEntity=MenuGroup.class)
+	@ManyToOne(fetch = FetchType.EAGER,targetEntity=MenuGroup.class)
 	@JoinColumn(name="menu_group_id")
 	private MenuGroup menuGroup;
 	
-	@OneToMany(mappedBy="menu")
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="menu")
 	private List<OrderMenu> orderMenus = new ArrayList<>();
 	
 	
