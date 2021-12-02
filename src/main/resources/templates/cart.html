@@ -17,7 +17,7 @@
 			</tr>
 			<tr th:each="c : ${cart}">
 				
-				<td th:text="${cStat.index}"></td>
+				<td th:text="${cStat.index+1}"></td>
 				<td th:text="${c.menu.name}"></td>
 
 				<td th:text="${c.options[0].name}"></td>
