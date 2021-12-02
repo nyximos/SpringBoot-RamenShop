@@ -3,6 +3,7 @@ body{
 }
 p{
 	font-size: 20px;
+	margin:0;
 }
 
 .menu-component{
@@ -19,7 +20,6 @@ p{
 .menu-box{
 	padding: 15% 15%;
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
     align-items: center;
     height: 100%;
@@ -38,9 +38,10 @@ p{
 }
 
 .btn-box{
+	margin-top: 20px;
+	height: 200px;
 	padding: 30px;
 	width: 400px;
-	height: 15%;
 	background-color: palegoldenrod;
 }
 
@@ -91,19 +92,22 @@ p{
 	max-width: 600px;
 	margin: auto;
 }
-.form-input {
-	/* 실제 width는 100%+ 20px  그래서 box-sizing을 border-box로 해야댐*/
-	width: 100%;
-	padding: 10px;
-	font-size: 20px;
-	border: 1px solid black;
-	border-radius: 5px;
+
+.left{
+	float:left;
+	width: 45%;
+}
+
+.right{
+	float:right;
+		width: 55%;
 }
 
 .w-100 {
 	width: 100%;
 	padding: 10px;
 	/* w-50 이랑 간격 맞출라면 패딩 똑같이 */
+
 }
 
 .w-50 {
@@ -119,12 +123,51 @@ p{
 .yellow-button {
 	display: block;
 	margin-left: auto;
-	/* margin-right: auto; */
+	margin-right: auto;
 	background-color: orange;
 	color: white;
-	font-size: 15px;
-	padding: 10px;
 	width: 100px;
 	border: 0;
 	border-radius: 5px;
+}
+
+.cartStock{
+	height: 50px;
+}
+
+.numBtn{
+	line-height: 100%;
+	float:right;
+	width: 40px;
+	height: 100%;
+    padding: 10px;
+    font-size: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.form-input {
+	/* 실제 width는 100%+ 20px  그래서 box-sizing을 border-box로 해야댐*/
+	text-align:right;
+	width: 175px;
+	padding: 10px;
+	font-size: 20px;
+	border: 1px solid black;
+	border-radius: 5px;
+
+}
+
+.numBox{
+	text-align:right;
+	float:right;
+	width: 20%;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-right: 5px;
+	margin-left: 5px;
+}
+
+.mgb10{
+	    margin-bottom: 20px;
 }
