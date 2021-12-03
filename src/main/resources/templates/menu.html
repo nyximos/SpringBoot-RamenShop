@@ -117,7 +117,7 @@
 				</div>
 				<div class="option-info" th:if="${menuGroupId.toString().equals('2')}">
 					<div class="option-box">
-						<form th:action="@{'api/menus/{id}'(id=${menu.id})}" method="post">
+						<form th:action="@{'/api/menus/{id}'(id=${menu.id})}" method="post">
 							<div class="w-100">
 								<p>맛</p>
 								<div class="w-50">
@@ -192,6 +192,8 @@
 				</div>
 				<div class="option-info"
 					th:if="${menuGroupId.toString().equals('3')} or ${menuGroupId.toString().equals('4')}">
+					<form th:action="@{'/api/menus/{id}'(id=${menu.id})}" method="post">
+
 					<div>
 						<div class="cartStock mgb10" style="margin-right: 50px;">
 							<span>구입 수량</span>
@@ -215,6 +217,8 @@
 						<div th:onclick="'location.href=\''+ @{/menus} + '\''">취소</div>
 						<div><button class="yellow-button">담기</button></div>
 					</div>
+					
+					</form>
 				</div>
 			</div>
 		</div>

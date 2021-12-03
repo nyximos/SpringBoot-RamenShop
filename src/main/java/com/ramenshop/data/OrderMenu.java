@@ -30,17 +30,19 @@ public class OrderMenu {
 	@Column(nullable = false)
 	private int count=1;
 	
-	@ManyToOne(fetch = FetchType.LAZY,targetEntity=Order.class)
+	@ManyToOne(fetch = FetchType.EAGER,targetEntity=Order.class)
 	@JoinColumn(name="order_id")
 	private Order order;
 	
-	@ManyToOne(fetch = FetchType.LAZY,targetEntity=Menu.class)
+	@ManyToOne(fetch = FetchType.EAGER,targetEntity=Menu.class)
 	@JoinColumn(name="menu_id")
 	private Menu menu;
 	
-	@OneToMany(mappedBy="orderMenu")
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="orderMenu")
 	private List<OrderMenuOption> orderMenuOptions = new ArrayList<>();
 
+	public OrderMenu(){}
+	
 	public Long getId() {
 		return id;
 	}

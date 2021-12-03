@@ -19,11 +19,11 @@ public class OrderMenuOption {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@ManyToOne(fetch = FetchType.LAZY,targetEntity=Option.class)
+	@ManyToOne(fetch = FetchType.EAGER,targetEntity=Option.class)
 	@JoinColumn(name="option_id")
 	private Option option;
 
-	@ManyToOne(fetch = FetchType.LAZY,targetEntity=OrderMenu.class)
+	@ManyToOne(fetch = FetchType.EAGER,targetEntity=OrderMenu.class)
 	@JoinColumn(name="order_menu_id")
 	private OrderMenu orderMenu;
 

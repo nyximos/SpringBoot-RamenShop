@@ -38,7 +38,7 @@ public class MenuApiController {
 		@PostMapping("/menus/{id}")
 		public String putMenu(
 				@PathVariable(name = "id") Long id,
-				@RequestParam(name = "spicy") String spicy,
+				@RequestParam(required = false) Long spicy,
 				@RequestParam(name = "count") int count,
 				@RequestParam(name = "total") int total,
 				HttpServletRequest request,
@@ -50,14 +50,19 @@ public class MenuApiController {
 				System.out.println(spicy);
 				
 				Menu menu = menuService.findMenu(id).get();
-				
 				String[] topings = request.getParameterValues("double");
 				List<Option> ol = new ArrayList();
-
-				int price=menu.getPrice();
 				Option o;
-				for(int i=0; i<topings.length; i++) {
-					ol.add(o = optionRepository.findById(Long.parseLong(topings[i])).get());
+				if(spicy!=null) {
+					o = optionRepository.findById(spicy).get();
+					ol.add(o);						
+					}
+				
+				if(topings!=null) {
+					for(int i=0; i<topings.length; i++) {
+						ol.add(o = optionRepository.findById(Long.parseLong(topings[i])).get());
+					}
+
 				}
 				
 				

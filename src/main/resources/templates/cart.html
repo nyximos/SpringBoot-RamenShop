@@ -15,12 +15,11 @@
 			<tr>
 				<td>cart</td>
 			</tr>
-			<tr th:each="c : ${cart}">
-				
+			<tr th:each="c : ${cart}"
 				<td th:text="${cStat.index+1}"></td>
 				<td th:text="${c.menu.name}"></td>
 
-				<td th:text="${c.options[0].name}"></td>
+				<td th:text="${c.options[0].name}" th:if="${c.options.size>0}"></td>
 				<td th:text="${c.options[1].name}" th:if="${c.options.size>1}"></td>
 				<td th:text="${c.options[2].name}" th:if="${c.options.size>2}"></td>
 				<td th:text="${c.options[3].name}" th:if="${c.options.size>3}"></td>
@@ -49,7 +48,9 @@
 		<span class="sum"></span>
 	</div>
 	<div>
-		<button>결제</button>
+		<form th:action="@{'/menus/cart'}" th:method="Post">
+			<button type="submit">결제 </button>
+		</form>
 	</div>
 
 	<script th:inline="javascript">
@@ -61,6 +62,8 @@
 				});
 
 				$('.sum').html(sum);
+				$('.sum').val(sum);
+				
 			});
 
 		});
