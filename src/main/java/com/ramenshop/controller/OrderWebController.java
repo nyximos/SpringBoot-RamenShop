@@ -48,11 +48,11 @@ public class OrderWebController {
 				HttpServletResponse response
 				) {
 	
-				
 				HttpSession session = request.getSession();
-		
+				System.out.println(session.getCreationTime());
+				
 				if (session.getAttribute("cart") == null) {
-					System.out.println("cart null");
+					return "/cart";
 				} 
 				
 				List<CartMenu> m = (List<CartMenu>)session.getAttribute("cart");
@@ -63,7 +63,7 @@ public class OrderWebController {
 					
 					price+=m.get(i).getPrice();
 				}
-
+				
 				
 				Order o = new Order();
 				o.setAmount(price);
@@ -92,7 +92,7 @@ public class OrderWebController {
 					System.out.println(e);
 					System.out.print("에러");
 				}
-				
+				session.removeAttribute("cart");
 				return "/cart";
 
 	
