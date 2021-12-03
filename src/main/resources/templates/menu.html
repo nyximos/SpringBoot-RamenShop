@@ -239,8 +239,6 @@
 
 	<script th:inline="javascript">
 
-
-
 		/*<![CDATA[*/
 
 		var result = /*[[ ${menu.price} ]]*/'';
@@ -277,6 +275,15 @@
 			});
 		}
 		/*]]*/
+		
+		$(".yellow-button").click(function(e){
+			if($('input:radio[name=spicy]').is(':checked')==false){
+				alert("맛을 선택하세요!");
+				e.preventDefault();
+				
+			}
+
+		});
 
 
 		$(".plus").click(function () {

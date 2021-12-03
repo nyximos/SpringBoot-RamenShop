@@ -15,8 +15,7 @@
 			<tr>
 				<td>cart</td>
 			</tr>
-			<tr th:each="c : ${cart}">
-
+			<tr th:each="c : ${cart}"
 				<td th:text="${cStat.index+1}"></td>
 				<td th:text="${c.menu.name}"></td>
 
