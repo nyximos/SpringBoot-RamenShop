@@ -20,7 +20,7 @@
 				<td th:text="${cStat.index+1}"></td>
 				<td th:text="${c.menu.name}"></td>
 
-				<td th:text="${c.options[0].name}"></td>
+				<td th:text="${c.options[0].name}" th:if="${c.options.size>0}"></td>
 				<td th:text="${c.options[1].name}" th:if="${c.options.size>1}"></td>
 				<td th:text="${c.options[2].name}" th:if="${c.options.size>2}"></td>
 				<td th:text="${c.options[3].name}" th:if="${c.options.size>3}"></td>
