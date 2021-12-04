@@ -25,22 +25,11 @@ public class SalesWebController {
 	@GetMapping("/admin/sales")
 	public String sales(
 			Model model
-//			@RequestParam String menu
 			) {
-		
-		String fromdate = "211201";
-		String todate = "211231";
-		String menu= "콜라";
-		
-		int a = 211201;
-		int b = 211205;
-		LocalDate ld1 = LocalDate.now();
-		LocalDate ld2 = LocalDate.now();
-		LocalDateTime d = LocalDateTime.parse("2021-12-31 23:59:59", 
-				DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		
+		String fromdate = "20000101";
+		String todate = "20300101";
 		model.addAttribute("menus", menuService.findMenus());
-		model.addAttribute("sales", orderMenuRepository.selectAllSQL());
+		model.addAttribute("sales", orderMenuRepository.selectAllSQL(fromdate, todate));
 		
 		String length = "1";
 		model.addAttribute("daySales", orderMenuRepository.selectAllSQL(length));
@@ -67,7 +56,25 @@ public class SalesWebController {
 		System.out.println(todate);
 		
 		model.addAttribute("menus", menuService.findMenus());
-		model.addAttribute("sales", orderMenuRepository.selectAllSQL(fromdate,todate,menu));
+		if(menu.equals("전체")) {
+			model.addAttribute("sales", orderMenuRepository.selectAllSQL(fromdate,todate));
+			
+		}else {
+			model.addAttribute("sales", orderMenuRepository.selectAllSQL(fromdate,todate,menu));
+			
+		}
+		String length = "1";
+		model.addAttribute("daySales", orderMenuRepository.selectAllSQL(length));
+		length = "7";
+		model.addAttribute("weekSales", orderMenuRepository.selectAllSQL(length));
+		length = "30";
+		model.addAttribute("monthSales", orderMenuRepository.selectAllSQL(length));
+		length = "365";
+		model.addAttribute("yearSales", orderMenuRepository.selectAllSQL(length));
+
+		model.addAttribute("result", "성공하였습니다.");
+
+		
 		
 		return "sales";
 	}
