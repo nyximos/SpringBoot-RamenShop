@@ -1,12 +1,48 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<meta charset="UTF-8">
 	<title>sales</title>
 </head>
+
 <body>
 	<h1>통계</h1>
-	a
-</form>
+	<form th:action="${'/admin/sales'}" th:method="Post">
+		<select  th:name="menu" id="selectMenuGroup">
+			<option th:each="m : ${menus}" th:text="${m.name}" th:value="${m.name}"></option>
+		</select>
+
+		<input type="text" name="fromdate" placeholder="fromdate ex)20211201">
+		<input type="text" name="todate" placeholder="todate ex)20211231">
+		<button>검색</button>
+	</form>
+
+	<table>
+		<tr>
+			<td></td>
+			<td>메뉴</td>
+			<td>가격</td>
+			<td>판매수량</td>
+			<td>판매액</td>
+			<td>옵션판매액</td>
+			<td>총판매액</td>
+		</tr>
+		<tr th:each="s : ${sales}">
+			<td th:text="${sStat.count}"></td>
+			<td th:text="${s[0]}"></td>
+			<td th:text="${s[1]}"></td>
+			<td th:text="${s[2]}"></td>
+			<td th:text="${s[3]}"></td>
+			<td th:text="${s[4]}"></td>
+			<td th:text="${s[5]}"></td>
+		</tr>
+	</table>
+	</form>
+	<h3 th:text="|하루 매출액 : ${daySales}원|"></h3>
+	<h3 th:text="|일주일 매출액 : ${weekSales}원|"></h3>
+	<h3 th:text="|한달 매출액 : ${monthSales}원|"></h3>
+	<h3 th:text="|일년 매출액 : ${yearSales}원|"></h3>
 </body>
+
 </html>
