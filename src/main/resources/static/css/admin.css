@@ -1,0 +1,187 @@
+@font-face {
+    font-family: 'IBMPlexSansKR-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html {overflow-y:scroll}
+
+body{
+	height: 100%;
+	background-color: lightblue;
+	margin:0;padding:0;
+	font-family: 'IBMPlexSansKR-Regular';
+}
+.container{
+ padding:10px;
+}
+
+ul, dl,dt,dd {margin:0;padding:0;list-style:none}
+a {color:#000;text-decoration:none}
+
+div,
+input,
+textarea {
+	box-sizing: border-box;
+}
+
+.header{width:100%; background: sandybrown; margin-bottom: 100px}
+
+.header .header-box{overflow: hidden; padding: 0px 10px;}
+
+.header h1{float:left; }
+.header h1 a{display: block; padding:10px; color: #fff;}
+.header h1 a span {display: inline-block; vertical-align: middle; margin-left: 0; color: #000; height: 40px; line-height: 40px; padding: 0 10px;}
+.header h1 a img{max-width:150px; max-height:40px;}
+
+.header .tnb{float:right; margin-top: 11px;}
+.header .tnb > ul > li{float:left;}
+.header .tnb > ul > li a{display: block; padding:10px; color: #000;}
+
+
+img {
+  width: 150px;
+  height: 150px;
+  vertical-align: middle;
+}
+.menu-object {
+	cursor: pointer;
+}
+
+.menu-object:hover{
+	background-color: floralwhite;
+}
+
+.content{
+	box-sizing: border-box;
+	position: absolute;
+	left: auto;
+	right: auto;
+}
+table{
+	width:1200px;
+	left: auto;
+	right: auto;
+}
+
+th{
+	height:50px;
+	background-color: sandybrown;
+	margin-bottom: 10px;
+}
+
+td{
+	vertical-align: middle;
+	padding : 20px;
+}
+
+td > div{
+	display:inline-block;
+	margin:0 auto;
+}
+
+
+button{
+	box-sizing: border-box;
+}
+
+.left {
+	width:80%;
+}
+.right{
+	width:20%;
+}
+
+.quickmenu { 
+	position: absolute;
+	margin:50px;
+	width:200px;
+	height:150px;
+	padding:10px;
+	float:right;
+	background-color:linen;
+	right:-5px;
+}
+
+
+.form-box{
+	background-color: peachpuff;
+	width:700px;
+	padding:50px;
+	position:absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);	
+}
+
+.btn-group{
+	margin: 0 auto;
+}
+
+.btn-menugroup{
+	width:100px;
+}
+
+.login-component {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: 300px;
+    height: 500px;
+    background: white;
+    box-shadow: 5px 5px 5px 5px #c4c4c4;
+    border-radius: 11px;
+}
+.login-box {
+    padding: 15% 8%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    height: 95%;
+}
+.login-title {
+    font-family: jost;
+    font-size: 30px;
+    color: sandybrown;
+}
+.login-title-L {
+    font-family: jost;
+    font-size: 40px;
+    color: sandybrown;
+}
+.login-input-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-button {
+    margin-top: 10%;
+    width: 100%;
+    color: white;
+    background-color: sandybrown;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+}
+.login-button:hover {
+    margin-top: 10%;
+    width: 100%;
+    color: black;
+    background-color: sandybrown;
+    border: 0;
+    outline: 0;
+    
+}
+
+.sales-component{
+	margin-top: 250px;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: 80%;
+    overflow: scroll;
+}

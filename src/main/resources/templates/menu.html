@@ -225,22 +225,24 @@
 	</div>
 
 
-	<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
-	<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-	<script src="/js/calculate.js"></script>
-
-	<script>
+	<script th:inline="javascript">
 		$(window).scroll(function () {  //스크롤이 움직일때마다 이벤트 발생 
 			let position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
 			$('.quickmenu').stop().animate({top: position + "px"}, 1000); //해당 오브젝트 위치값 재설정
 		});
 	</script>
 
+	<script th:inline="javascript" th:if="${menuGroupId.toString().equals('1')} and ${menuGroupId.toString().equals('2')}">
+	
+	
+	</script>
 
 	<script th:inline="javascript">
 
 		/*<![CDATA[*/
 
+		var menuGroupId = /*[[ ${menuGroupId.toString()} ]]*/'';
+		
 		var result = /*[[ ${menu.price} ]]*/'';
 		var count = $('#numBox').val();
 
@@ -277,12 +279,13 @@
 		/*]]*/
 		
 		$(".yellow-button").click(function(e){
+			if((menuGroupId=='1') || (menuGroupId=='2') ){
 			if($('input:radio[name=spicy]').is(':checked')==false){
 				alert("맛을 선택하세요!");
 				e.preventDefault();
 				
 			}
-
+			}
 		});
 
 
