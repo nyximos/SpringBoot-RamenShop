@@ -1,0 +1,45 @@
+.cart-component{
+	position: absolute;
+	 margin-left: auto;
+ 	 margin-right: auto;
+    left: 400px
+
+}
+.cart-box{
+	padding: 15% 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 300px;
+    width: 300px;
+    background: white;
+    box-shadow: 5px 5px 5px 5px #c4c4c4;
+    border-radius: 11px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    
+}
+
+
+
+.yellow-button2{
+	margin-left:10px;
+	margin-right:10px;
+	float:left;
+	display: block;
+
+	background-color: orange;
+	color: black;
+	width: 300px;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	border: 0;
+	font-size: 20px;
+	border-radius: 5px;
+}
+
+.yellow-button2:hover{
+		background-color: #ff7f00;
+    color: white;
+}

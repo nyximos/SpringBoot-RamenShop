@@ -10,77 +10,84 @@
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 	<link rel='stylesheet' href='/css/main.css'>
 	<link rel='stylesheet' href='/css/menu.css'>
+	<link rel='stylesheet' href='/css/cart.css'>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
 		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 
 <body>
 	<header th:insert="header.html"></header>
-	<h1>cart</h1>
-	<div>
-		<table>
-			<tr>
-				<td>cart</td>
-			</tr>
-			<tr th:each="c : ${cart}">
-				<td th:text="${cStat.index+1}"></td>
-				<td th:text="${c.menu.name}"></td>
+	<div class="container">
+		<h1>장바구니</h1>
+		<div class="center">
+			<div>
+				<h4>총 가격 : </h4>
+				<h4 class="sum"></h4>
+			</div>
 
-				<td th:text="${c.options[0].name}" th:if="${c.options.size>0}"></td>
-				<td th:text="${c.options[1].name}" th:if="${c.options.size>1}"></td>
-				<td th:text="${c.options[2].name}" th:if="${c.options.size>2}"></td>
-				<td th:text="${c.options[3].name}" th:if="${c.options.size>3}"></td>
-				<td th:text="${c.options[4].name}" th:if="${c.options.size>4}"></td>
-				<td th:text="${c.options[5].name}" th:if="${c.options.size>5}"></td>
-				<td th:text="${c.options[6].name}" th:if="${c.options.size>6}"></td>
-				<td th:text="${c.options[7].name}" th:if="${c.options.size>7}"></td>
-				<td th:text="${c.options[8].name}" th:if="${c.options.size>8}"></td>
-				<td th:text="${c.options[9].name}" th:if="${c.options.size>9}"></td>
-				<td th:text="${c.options[10].name}" th:if="${c.options.size>10}"></td>
+			<div style="margin-top: 30px; margin-left:150px; margin-bottom:30px; ">
+				<div class="yellow-button2" th:onclick="'location.href=\''+ @{/menus} + '\''">
+					<a role="button">메뉴보기</a>
+				</div>
+				<form th:action="@{'/menus/cart'}" th:method="Post">
+					<button class="yellow-button2" type="submit">결제 </button>
+				</form>
+				<div class="clear"></div>
+			</div>
+		</div>
 
-				<td th:text="|${c.count}개|"></td>
-				<td th:text="|${c.price}원|"></td>
-				<input type="hidden" class="price" th:value="${c.price}">
+		<div th:class="cart-component">
+			<div th:each="c : ${cart}" th:class="cart-box">
+				<div th:text="${cStat.index+1}"></div>
+				<div th:text="${c.menu.name}"></div>
 
-				<td scope="row">
+				<div th:text="${c.options[0].name}" th:if="${c.options.size>0}"></div>
+				<div th:text="${c.options[1].name}" th:if="${c.options.size>1}"></div>
+				<div th:text="${c.options[2].name}" th:if="${c.options.size>2}"></div>
+				<div th:text="${c.options[3].name}" th:if="${c.options.size>3}"></div>
+				<div th:text="${c.options[4].name}" th:if="${c.options.size>4}"></div>
+				<div th:text="${c.options[5].name}" th:if="${c.options.size>5}"></div>
+				<div th:text="${c.options[6].name}" th:if="${c.options.size>6}"></div>
+				<div th:text="${c.options[7].name}" th:if="${c.options.size>7}"></div>
+				<div th:text="${c.options[8].name}" th:if="${c.options.size>8}"></div>
+				<div th:text="${c.options[9].name}" th:if="${c.options.size>9}"></div>
+				<div th:text="${c.options[10].name}" th:if="${c.options.size>10}"></div>
+
+				<div th:text="|${c.count}개|"></div>
+				<div th:text="|${c.price}원|"></div>
+				<div>
+					<input type="hidden" class="price" th:value="${c.price}">
 					<form th:action="@{'/menus/delete/{id}'(id=${cStat.index})}" th:method="Post">
 						<input type="hidden" name="_method" value="delete" />
 						<button type="submit" id="submitButton">삭제 </button>
 					</form>
-				</td>
+				</div>
+			</div>
+		</div>
 
-			</tr>
-		</table>
-		<span>총 가격 : </span>
-		<span class="sum"></span>
-	</div>
-	<div>
-		<form th:action="@{'/menus/cart'}" th:method="Post">
-			<button type="submit">결제 </button>
-		</form>
 	</div>
 
 
 	<script th:inline="javascript">
-	$(document).ready(function () {
-		$(function () {
-			
+		$(document).ready(function () {
+			$(function () {
+
 				var sum = 0;
 				$('.price').each(function () {
 					sum += Number($(this).val());
 				});
-				sum = sum+'원';
+				sum = sum + '원';
 				$('.sum').html(sum);
 				$('.sum').val(sum);
 
+			});
 		});
-			});
-		
 
-			$(window).scroll(function () {  //스크롤이 움직일때마다 이벤트 발생 
-				let position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
-				$('.quickmenu').stop().animate({top: position + "px"}, 1000); //해당 오브젝트 위치값 재설정
-			});
+
+		$(window).scroll(function () {  //스크롤이 움직일때마다 이벤트 발생 
+			let position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+			$('.quickmenu').stop().animate({top: position + "px"}, 1000); //해당 오브젝트 위치값 재설정
+		});
 	</script>
 
 </body>
