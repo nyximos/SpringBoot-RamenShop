@@ -1,20 +1,21 @@
+
 .center{
-	padding: 300px;
-	background-color: lightgreen;
-    position:absolute;
-    top:50%; left:50%;
-    transform: translate(-50%, -50%);
+	position: relative;
+    top: 100px;
+
 }
 
 .outer-user-box{
 	width: 400px;
 	background-color: mediumaquamarine;
+	font-size: 30px;
 }
 
 .outer-admin-box{
-	height: 800px;
-	width: 400px;
+	height: 600px;
 	background-color: mediumaquamarine;
+	font-size: 25px;
+	width: 1000px;	
 }
 
 .inner-user-box:nth-child(1){
@@ -22,34 +23,39 @@
 	width: 400px;
 	background-color: plum;
 	margin-bottom: 50px;
+	
 }
 
 .inner-user-box:nth-child(2){
 	height: 400px;
-	width: 400px;
+	width: 300px;
 	background-color: lightpink;
 	margin-top: 50px;
 }
 
 .inner-admin-box:nth-child(1){
 	height: 200px;
-	width: 400px;
 	background-color: plum;
-	margin-bottom: 100px;
+	 float: left; width: 25%;
+	 border-radius: 50px;
+	 margin: 30px;
+
 }
 
 .inner-admin-box:nth-child(2){
 	height: 200px;
-	width: 400px;
-	background-color: salmon;
-	margin-bottom: 100px;
+	background-color: plum;
+	 float: left; width: 25%;
+	 border-radius: 50px;
+	 margin: 30px;
 }
 
 .inner-admin-box:nth-child(3){
 	height: 200px;
-	width: 400px;
-	background-color: powderblue;
-	margin-bottom: 100px;
+	background-color: plum;
+	 float: left; width: 25%;
+	 border-radius: 50px;
+	 margin: 30px;
 }
 
 .text-center{
@@ -57,6 +63,6 @@
 	text-align: center;
 }
 .text-center2{
-	line-height:200px;
+	line-height:200px; 
 	text-align: center;
 }

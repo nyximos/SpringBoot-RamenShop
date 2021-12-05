@@ -9,7 +9,6 @@ html {overflow-y:scroll}
 
 body{
 	height: 100%;
-	background-color: lightblue;
 	margin:0;padding:0;
 	font-family: 'IBMPlexSansKR-Regular';
 }
@@ -26,7 +25,7 @@ textarea {
 	box-sizing: border-box;
 }
 
-.header{width:100%; background: sandybrown; margin-bottom: 100px}
+.header{width:100%; background: #ff9f40; margin-bottom: 100px}
 
 .header .header-box{overflow: hidden; padding: 0px 10px;}
 
@@ -67,7 +66,7 @@ table{
 
 th{
 	height:50px;
-	background-color: sandybrown;
+	background-color: #ff9f40;
 	margin-bottom: 10px;
 }
 
@@ -94,7 +93,7 @@ button{
 }
 
 .quickmenu { 
-	position: absolute;
+	positdion: absolute;
 	margin:50px;
 	width:200px;
 	height:150px;
@@ -145,12 +144,12 @@ button{
 .login-title {
     font-family: jost;
     font-size: 30px;
-    color: sandybrown;
+    color: #ff9f40;
 }
 .login-title-L {
     font-family: jost;
     font-size: 40px;
-    color: sandybrown;
+    color: #ff9f40;
 }
 .login-input-button {
     display: flex;
@@ -160,8 +159,9 @@ button{
 .login-button {
     margin-top: 10%;
     width: 100%;
+    height: 40px;
     color: white;
-    background-color: sandybrown;
+    background-color: #ff9f40;
     border: 0;
     outline: 0;
     border-radius: 5px;
@@ -169,8 +169,9 @@ button{
 .login-button:hover {
     margin-top: 10%;
     width: 100%;
+    height: 40px;
     color: black;
-    background-color: sandybrown;
+    background-color: #ff9f40;
     border: 0;
     outline: 0;
     
@@ -185,3 +186,57 @@ button{
     width: 80%;
     overflow: scroll;
 }
+
+.mg5{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.nav-link:hover{
+	font-weight: 800;;
+}
+
+.yellow:hover{
+	background:#ff9f40;
+	color:black;
+}
+
+
+.a{
+  background:#ff9f40;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:60px;
+  font-size:1.6em;
+  padding:0 2em;
+  cursor:pointer;
+  transition:800ms ease all;
+  outline:none;
+}
+.a:hover{
+  background:#fff;
+  color:#ff9f40;
+}
+.a:before,button:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #ff9f40;
+  transition:400ms ease all;
+}
+.a:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.a:hover:before,.a:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+
