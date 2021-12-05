@@ -14,55 +14,62 @@
 <body>
 	<header th:insert="admin-header.html"></header>
 	<div class="sales-component">
-	<h2>기간별 매출액</h2>
-	
-	<h3 th:text="|일간 매출액 : ${daySales}원|"></h3>
-	<h3 th:text="|주간 매출액 : ${weekSales}원|"></h3>
-	<h3 th:text="|월간 매출액 : ${monthSales}원|"></h3>
-	<h3 th:text="|년간 매출액 : ${yearSales}원|"></h3>
-	<hr>
-	
-	<h2>메뉴별 판매량</h2>
-	<form th:action="${'/admin/sales'}" th:method="Post">
-		<select th:name="menu" id="selectMenuGroup">
-			<option value="전체">전체</option>
-			<option th:each="m : ${menus}" th:text="${m.name}" th:value="${m.name}"></option>
-		</select>
+		<div class="period-box">
+			<h2>기간별 매출액</h2>
+			<div class="mt20">
+			<h3 th:text="|일간 매출액 : ${daySales}원|"></h3>
+			<h3 th:text="|주간 매출액 : ${weekSales}원|"></h3>
+			<h3 th:text="|월간 매출액 : ${monthSales}원|"></h3>
+			<h3 th:text="|년간 매출액 : ${yearSales}원|"></h3>
+			</div>
+		</div>
+		<hr>
 
-		<input type="date" class="form-control" name="fromdate" placeholder="date input">
-		<input type="date" class="form-control" name="todate" placeholder="date input">
+		<div class="sales-menu-box">
+			<h2>메뉴별 판매량</h2>
+			<div class="mt20">
+				<form th:action="${'/admin/sales'}" th:method="Post">
+					<select th:name="menu" id="selectMenuGroup">
+						<option value="전체">전체</option>
+						<option th:each="m : ${menus}" th:text="${m.name}" th:value="${m.name}"></option>
+					</select>
+
+					<input type="date" class="form-control" name="fromdate" placeholder="date input">
+					<input type="date" class="form-control" name="todate" placeholder="date input">
 
 
 
-		<button>검색</button>
-	</form>
+					<button>검색</button>
+				</form>
+			</div>
 
-	<table>
-		<tr>
-			<td></td>
-			<td>메뉴</td>
-			<td>가격</td>
-			<td>판매수량</td>
-			<td>판매액</td>
-			<td>옵션판매액</td>
-			<td>총판매액</td>
-		</tr>
-		<tr th:each="s : ${sales}">
-			<td th:text="${sStat.count}"></td>
-			<td th:text="${s[0]}"></td>
-			<td th:text="${s[1]}"></td>
-			<td th:text="${s[2]}"></td>
-			<td th:text="${s[3]}"></td>
-			<td th:text="${s[4]}"></td>
-			<td th:text="${s[5]}"></td>
-		</tr>
-	</table>
-	</form>
+			<table>
+				<tr>
+					<td></td>
+					<td>메뉴</td>
+					<td>가격</td>
+					<td>판매수량</td>
+					<td>판매액</td>
+					<td>옵션판매액</td>
+					<td>총판매액</td>
+				</tr>
+				<tr th:each="s : ${sales}">
+					<td th:text="${sStat.count}"></td>
+					<td th:text="${s[0]}"></td>
+					<td th:text="${s[1]}"></td>
+					<td th:text="${s[2]}"></td>
+					<td th:text="${s[3]}"></td>
+					<td th:text="${s[4]}"></td>
+					<td th:text="${s[5]}"></td>
+				</tr>
+			</table>
+			</form>
 
-	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	<div>
-		<canvas id="chart"></canvas>
-	</div>
+			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+			<div>
+				<canvas id="chart"></canvas>
+			</div>
+		</div>
 	</div>
 	<script th:inline="javascript">
 

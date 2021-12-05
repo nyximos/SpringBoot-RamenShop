@@ -33,7 +33,7 @@ textarea {
 .header h1 a{display: block; padding:10px; color: #fff;}
 .header h1 a span {display: inline-block; vertical-align: middle; margin-left: 0; color: #000; height: 40px; line-height: 40px; padding: 0 10px;}
 .header h1 a img{max-width:150px; max-height:40px;}
-
+s
 .header .tnb{float:right; margin-top: 11px;}
 .header .tnb > ul > li{float:left;}
 .header .tnb > ul > li a{display: block; padding:10px; color: #000;}
@@ -97,7 +97,7 @@ button{
 }
 
 .quickmenu { 
-	positdion: absolute;
+	position: absolute;
 	margin:50px;
 	width:200px;
 	height:150px;
@@ -205,5 +205,45 @@ button{
 	color:black;
 }
 
+.period-box{
+	margin-top: 100px;
+	margin-bottom: 40px;;
+}
 
 
+.sales-menu-box{
+	margin-top: 40px;
+}
+
+.mt20{
+	margin-top: 20px;	
+}
+
+.box{
+	font-size: 20px;
+	width: 200px;
+    height: 200px;
+	text-align: center;
+	line-height: 100px;
+    padding: 48px;
+    color: #333;
+    box-sizing: border-box;
+    margin: 2px;
+    flex: 0 0 auto;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+    border-radius: 4px;
+    float: left;
+ 	margin-right: 50px;
+ 	margin-left: 50px;
+ 	transition: all 1s;
+}
+
+.box:hover{
+	border-radius: 50%;
+    background: #ff9f40;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+}
+
+a:hover{
+	color: black;
+}

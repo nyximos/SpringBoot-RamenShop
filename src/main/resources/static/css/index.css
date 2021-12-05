@@ -1,22 +1,18 @@
 
 .center{
-	position: relative;
-    top: 100px;
-
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20%;
 }
 
 .outer-user-box{
 	width: 400px;
-	background-color: mediumaquamarine;
+	background-color: #f9f9f9;
 	font-size: 30px;
 }
 
-.outer-admin-box{
-	height: 600px;
-	background-color: mediumaquamarine;
-	font-size: 25px;
-	width: 1000px;	
-}
+
 
 .inner-user-box:nth-child(1){
 	height: 400px;
@@ -33,30 +29,6 @@
 	margin-top: 50px;
 }
 
-.inner-admin-box:nth-child(1){
-	height: 200px;
-	background-color: plum;
-	 float: left; width: 25%;
-	 border-radius: 50px;
-	 margin: 30px;
-
-}
-
-.inner-admin-box:nth-child(2){
-	height: 200px;
-	background-color: plum;
-	 float: left; width: 25%;
-	 border-radius: 50px;
-	 margin: 30px;
-}
-
-.inner-admin-box:nth-child(3){
-	height: 200px;
-	background-color: plum;
-	 float: left; width: 25%;
-	 border-radius: 50px;
-	 margin: 30px;
-}
 
 .text-center{
 	line-height:400px;
