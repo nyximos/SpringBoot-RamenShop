@@ -180,7 +180,7 @@ button{
 }
 
 .sales-component{
-	margin-top: 250px;
+	margin-top: 400px;
 	position: absolute;
     top: 50%;
     left: 50%;
@@ -209,12 +209,14 @@ button{
 }
 
 
-.sales-menu-box{
-	margin-top: 40px;
-}
 
 .mt20{
 	margin-top: 20px;	
+	font-size: 21px;
+}
+.mt40{
+	margin-top: 40px;	
+	font-size: 21px;
 }
 
 .box{
@@ -290,4 +292,19 @@ a:hover{
 
 .mgt10{
 	margin-bottom: 10px;
+	
+}
+
+.search-button{
+	font-size: 21px;
+    width: 100px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    color: white;
+    background-color: #ff9f40;
+    border: 0;
+    outline: 0;
+    border-radius: 5px;
+	
 }

@@ -25,24 +25,28 @@
 		</div>
 		<hr>
 
-		<div class="sales-menu-box">
+		<div class="sales-menu-box mt40">
 			<h2>메뉴별 판매량</h2>
-			<div class="mt20">
+			<div class="mt20"><div class="mt20"></div>
 				<form th:action="${'/admin/sales'}" th:method="Post">
-					<select th:name="menu" id="selectMenuGroup">
+				
+					<div>
+					<select th:name="menu" id="selectMenuGroup" style="width: 850px;" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
 						<option value="전체">전체</option>
 						<option th:each="m : ${menus}" th:text="${m.name}" th:value="${m.name}"></option>
 					</select>
-
-					<input type="date" class="form-control" name="fromdate" placeholder="date input">
-					<input type="date" class="form-control" name="todate" placeholder="date input">
-
-
-
-					<button>검색</button>
+					</div>
+					<div>
+					<div class="mt20">
+					시작일 <input type="date" class="form-control-lg" style="margin-right:80px;" name="fromdate" placeholder="date input">
+					
+					종료일 <input type="date" class="form-control-lg" style="margin-right:100px;" name="todate" placeholder="date input">
+					<button class="search-button">검색</button>
+					</div>
+					</div>
 				</form>
 			</div>
-
+					<div class="mt20">
 			<table>
 				<tr>
 					<td></td>
@@ -66,8 +70,8 @@
 			</form>
 
 			<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-			<div>
-				<canvas id="chart"></canvas>
+			<div style="margin-top:100px; margin-bottom:100px;">
+				<canvas id="chart" ></canvas>
 			</div>
 		</div>
 	</div>
@@ -108,7 +112,6 @@
 			type: 'bar',
 			data: data
 		});
-
 		function colorize() {
 			var r = Math.floor(Math.random() * 200);
 			var g = Math.floor(Math.random() * 200);
