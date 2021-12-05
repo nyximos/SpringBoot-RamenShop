@@ -8,7 +8,6 @@
 		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 	<link rel='stylesheet' href='/css/main.css'>
 	<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
-	<script src="/webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 
 </head>
@@ -58,31 +57,22 @@
 					</tbody>
 				</table>
 			</div>
-			<div class="right">
-				<div class="row quickmenu">
-					<div class="cart">
-						<div class="col-auto mr-auto"></div>
-						<div class="col-auto">
-							<a class="btn btn-outline-warning btn-lg" th:href="@{/menus}" role="button">메뉴보기</a>
+			<div>
+				<div class="footer">
+					<div class="ff">
+						<div class="f user-button" th:onclick="'location.href=\''+ @{/menus} + '\''">
+							<a role="button">메뉴보기</a>
 						</div>
-					</div>
-					<div class="cart">
-						<div class="col-auto mr-auto"></div>
-						<div class="col-auto">
-							<a class="btn btn-outline-warning btn-lg" th:href="@{/cart}" role="button">장바구니</a>
+						<div class="f user-button"  th:onclick="'location.href=\''+ @{/cart} + '\''">
+							<a th:href="@{/cart}" role="button">장바구니</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
-		<script>
-		$(window).scroll(function () {  //스크롤이 움직일때마다 이벤트 발생 
-			let position = $(window).scrollTop()+400; // 현재 스크롤바의 위치값을 반환합니다.
-			$('.quickmenu').stop().animate({top: position + "px"}, 1000); //해당 오브젝트 위치값 재설정
-		});
-	</script>
+
+
 
 </body>
 

@@ -42,7 +42,7 @@
 				<td th:text="|${c.price}원|"></td>
 				<input type="hidden" class="price" th:value="${c.price}">
 
-				<td scope="row" width="20%">
+				<td scope="row">
 					<form th:action="@{'/menus/delete/{id}'(id=${cStat.index})}" th:method="Post">
 						<input type="hidden" name="_method" value="delete" />
 						<button type="submit" id="submitButton">삭제 </button>

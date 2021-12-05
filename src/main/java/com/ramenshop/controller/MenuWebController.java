@@ -12,11 +12,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.context.support.HttpRequestHandlerServlet;
 
 import com.ramenshop.data.CartMenu;
 import com.ramenshop.data.Menu;
-import com.ramenshop.data.Option;
 import com.ramenshop.repository.MenuRepository;
 import com.ramenshop.service.MenuService;
 
