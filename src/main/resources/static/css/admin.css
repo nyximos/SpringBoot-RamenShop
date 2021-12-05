@@ -38,6 +38,10 @@ textarea {
 .header .tnb > ul > li{float:left;}
 .header .tnb > ul > li a{display: block; padding:10px; color: #000;}
 
+h2 {
+	font-family: 'IBMPlexSansKR-Regular';
+	font-weight: 700;
+}
 
 img {
   width: 150px;
@@ -201,42 +205,5 @@ button{
 	color:black;
 }
 
-
-.a{
-  background:#ff9f40;
-  color:#fff;
-  border:none;
-  position:relative;
-  height:60px;
-  font-size:1.6em;
-  padding:0 2em;
-  cursor:pointer;
-  transition:800ms ease all;
-  outline:none;
-}
-.a:hover{
-  background:#fff;
-  color:#ff9f40;
-}
-.a:before,button:after{
-  content:'';
-  position:absolute;
-  top:0;
-  right:0;
-  height:2px;
-  width:0;
-  background: #ff9f40;
-  transition:400ms ease all;
-}
-.a:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-.a:hover:before,.a:hover:after{
-  width:100%;
-  transition:800ms ease all;
-}
 
 
