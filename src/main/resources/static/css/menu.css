@@ -26,14 +26,12 @@ p{
 }
 
 .menu-info{
-	width: 80%;
-	height: 35%;
-	background-color: lavender;
+	width: 85%;
+	height: 32%;
 }
 
 .option-info{
 	height: 45%;
-	background-color: peachpuff;
 }
 
 .btn-box{
@@ -41,7 +39,6 @@ p{
 	height: 200px;
 	padding: 30px;
 	width: 400px;
-	background-color: palegoldenrod;
 }
 
 .btn-box div{
@@ -51,7 +48,6 @@ p{
 	width: 50%;
 	padding: 10px;
 	text-align: center;
-	background-color: lightpink;
 
 }
 
@@ -64,7 +60,6 @@ p{
 .menu-title{
 	text-align: center;
     font-size: 30px;
-    color: #ec7676;
     padding: 10px;
 }
 
@@ -82,6 +77,11 @@ p{
 	text-align: center;
 
 }
+
+.mgt10{
+	    margin-top: 50px;
+}
+
 
 
 .form-white {

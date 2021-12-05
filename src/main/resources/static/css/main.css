@@ -25,7 +25,7 @@ textarea {
 	box-sizing: border-box;
 }
 
-.header{width:100%; background: sandybrown; margin-bottom: 100px}
+.header{width:100%; background: #ff9f40; margin-bottom: 100px}
 
 .header .header-box{overflow: hidden; padding: 0px 10px;}
 
@@ -44,6 +44,13 @@ img {
   height: 150px;
   vertical-align: middle;
 }
+.imgdon {
+	animation: rotate_image 6s linear infinite;transform-origin: 50% 50%;}
+	
+@keyframes rotate_image{ 100% { transform: rotate(360deg); } }
+
+
+
 .menu-object {
 	cursor: pointer;
 }
@@ -66,7 +73,7 @@ table{
 
 th{
 	height:50px;
-	background-color: sandybrown;
+	background-color: #ff9f40;
 	margin-bottom: 10px;
 }
 
@@ -96,8 +103,8 @@ button{
 	position: absolute;
 	margin:50px;
 	width:200px;
-	height:150px;
-	padding:10px;
+	height:200px;
+	padding:30px;
 	float:right;
 	background-color:linen;
 	right:-5px;
@@ -120,4 +127,37 @@ button{
 
 .btn-menugroup{
 	width:100px;
+}
+.outer-user-box{
+	position:absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);	
+}
+.order-box{
+	font-size: 20px;
+	width: 400px;
+    height: 100px;
+	text-align: center;
+	line-height: 90px;
+    padding: 10px;
+    color: #333;
+    box-sizing: border-box;
+    margin: 2px;
+    flex: 0 0 auto;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+    border-radius: 50px;
+    float: left;
+ 	margin-right: 50px;
+ 	margin-left: 50px;
+ 	transition: all 1s;
+}
+
+.order-box:hover{
+    background: #ff9f40;
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+}
+
+.mgb10{
+	    margin-bottom: 20px;
 }

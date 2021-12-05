@@ -1,0 +1,172 @@
+body{
+	height: 1920px;
+}
+p{
+	font-size: 20px;
+	margin:0;
+}
+
+.menu-component{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 1000px;
+    background: white;
+    box-shadow: 5px 5px 5px 5px #c4c4c4;
+    border-radius: 11px;
+}
+.menu-box{
+	padding: 15% 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.menu-info{
+	width: 85%;
+	height: 20%;
+}
+
+
+
+.btn-box{
+	margin-top: 20px;
+	height: 200px;
+	padding: 30px;
+	width: 400px;
+}
+
+.btn-box div{
+	float: left;
+	height: 100%;
+	line-height: 100px;
+	width: 50%;
+	padding: 10px;
+	text-align: center;
+
+}
+
+.option-box{
+	padding:15px;
+	font-size: 20px;
+}
+
+
+.menu-title{
+	text-align: center;
+    font-size: 30px;
+    padding: 10px;
+}
+
+.menu-img{
+	padding:10px;
+}
+
+.menu-price{
+	padding: 20px;
+	text-align: center;
+
+}
+ .menu-discription{
+	padding: 20px;
+	text-align: center;
+
+}
+
+
+.form-white {
+	background-color: white;
+	padding: 30px;
+	width: 80%;
+	max-width: 600px;
+	margin: auto;
+}
+
+.left{
+	float:left;
+	width: 45%;
+}
+
+.right{
+	float:right;
+		width: 55%;
+}
+
+.w-100 {
+	width: 100%;
+	padding: 10px;
+	/* w-50 이랑 간격 맞출라면 패딩 똑같이 */
+
+}
+
+.w-50 {
+	width: 50%;
+	float: left;
+	padding: 10px;
+}
+
+.clear {
+	clear: both;
+}
+
+.yellow-button {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: orange;
+	color: white;
+	width: 100px;
+	border: 0;
+	border-radius: 5px;
+}
+
+.cartStock{
+	margin-top: 300px;
+	height: 50px;
+}
+
+.numBtn{
+	line-height: 100%;
+	float:right;
+	width: 40px;
+	height: 100%;
+    padding: 10px;
+    font-size: 30px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.form-input {
+	/* 실제 width는 100%+ 20px  그래서 box-sizing을 border-box로 해야댐*/
+	text-align:right;
+	width: 175px;
+	padding: 10px;
+	font-size: 20px;
+	border: 1px solid black;
+	border-radius: 5px;
+
+}
+
+.numBox{
+	text-align:right;
+	float:right;
+	width: 20%;
+    padding: 10px;
+    font-size: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-right: 5px;
+	margin-left: 5px;
+}
+
+.mgb10{
+	    margin-bottom: 20px;
+}
+
+.mgt10{
+	    margin-top: 50px;
+}
+
+

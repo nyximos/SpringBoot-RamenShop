@@ -13,33 +13,30 @@
 </head>
 
 
-<body>
+<body style="background-color: #fff;">
 	<header sec:authorize="isAnonymous()" th:insert="header.html"></header>
 	<header sec:authorize="isAuthenticated()" th:insert="admin-header.html"></header>
-	<div class="container center" sec:authorize="isAnonymous()">
+	<div class="container" sec:authorize="isAnonymous()">
 		<div class="outer-user-box">
-			<div class="inner-user-box text-center">
-				<a th:href="@{/menus}">주문하기</a>
+			<div class="order-img-box">
+				<img src="don.png" class="imgdon" style="margin-left: 50px;padding:50px; align-items: center; width: 400px; height: 400px; margin-bottom:200px;">
 			</div>
-			<div class="inner-user-box text-center">
-				<a th:href="@{/login}">관리자로그인</a>
+			<div class="order-box" th:onclick="'location.href=\''+ @{/menus} + '\''">
+				<a th:href="@{'/menus'}">주문하기</a>
 			</div>
 		</div>
 	</div>
 	<div class="container center" sec:authorize="isAuthenticated()">
 		<div class="outer-admin-box">
-			<div class="box">
+			<div class="box" th:onclick="'location.href=\''+ @{/admin/menus} + '\''">
 				<a th:href="@{/admin/menus}">메뉴수정</a>
 			</div>
-
-			<div class="box">
+			<div class="box" th:onclick="'location.href=\''+ @{/admin/sales} + '\''">
 				<a th:href="@{/admin/sales}">매출통계</a>
 			</div>
-
-			<div class="box">
+			<div class="box" th:onclick="'location.href=\''+ @{/admin/members} + '\''">
 				<a th:href="@{/admin/members}">관리자등록</a>
 			</div>
-
 		</div>
 	</div>
 </body>
