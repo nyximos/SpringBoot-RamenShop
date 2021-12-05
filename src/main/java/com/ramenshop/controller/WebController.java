@@ -73,21 +73,6 @@ public class WebController {
         return "cart";
 	}
 
-	//장바구니 메뉴 삭제
-    @PostMapping("/menus/delete/{id}")
-    public String delSessionList(
-    		@PathVariable int id,
-    		Model model,
-    		HttpServletRequest request,
-    		HttpServletResponse response
-    		) {	    	
-			System.out.println("in");
-			List<CartMenu> m1 = (List<CartMenu>)request.getSession().getAttribute("cart");
-			System.out.println(m1.size());
-			m1.remove(id);
-			model.addAttribute("cart",m1);
-    	System.out.println("out");
-        return "cart";
-    }
+	
 	
 }

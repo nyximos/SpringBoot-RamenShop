@@ -22,6 +22,7 @@ public class SalesWebController {
 	@Autowired
 	MenuService menuService;
 	
+	//전체기간 통계 조회
 	@GetMapping("/admin/sales")
 	public String sales(
 			Model model
@@ -44,6 +45,7 @@ public class SalesWebController {
 		return "sales";
 	}
 	
+	//기간,메뉴 선택하여 통계 조회
 	@PostMapping("/admin/sales")
 	public String selectedSales(
 			Model model,

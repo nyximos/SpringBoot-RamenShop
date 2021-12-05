@@ -99,21 +99,7 @@ public class MenuApiController {
 
 		}
 
-		//장바구니 메뉴 삭제
-	    @PostMapping("/menus/delete/{id}")
-	    public String delSessionList(
-	    		@PathVariable Long id,
-	    		Model model,
-	    		HttpServletRequest request
-	    		) {	    	
-	    	System.out.println("in");
-	    	List<CartMenu> m1 = (List<CartMenu>)request.getSession().getAttribute("cart");
-	    	m1.remove(id);
-			model.addAttribute("cart",m1);
-
-	    	
-	        return "cart";
-	    }
+		
 
 	
 }
