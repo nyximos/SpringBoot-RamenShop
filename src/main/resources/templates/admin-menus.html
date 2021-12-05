@@ -75,11 +75,8 @@
 			</div>
 			<div class="right">
 				<div class="row quickmenu">
-					<div class="menu-post-button">
-						<div class="col-auto mr-auto"></div>
-						<div class="col-auto">
-							<a class="btn btn-outline-warning" th:href="@{/admin/menus/post}" role="button">메뉴등록</a>
-						</div>
+					<div class="menu-button"  role="button" th:onclick="'location.href=\''+ @{/admin/menus/post} + '\''">
+							메뉴등록
 					</div>
 				</div>
 			</div>
