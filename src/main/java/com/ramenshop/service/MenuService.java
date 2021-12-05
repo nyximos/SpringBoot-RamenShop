@@ -113,5 +113,9 @@ public class MenuService {
 		}
 		
 	}
+	
+	public List<MenuGroup> findMenuGroups(){
+		return menuGroupRepository.findAll();
+	}
 
 }

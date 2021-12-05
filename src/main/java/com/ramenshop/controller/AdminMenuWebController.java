@@ -53,6 +53,8 @@ public class AdminMenuWebController {
     public String post(Model model, @PathVariable Long id) {
     	try {
 			menuService.findMenu(id).ifPresent(o -> model.addAttribute("menu", o));
+			model.addAttribute("menus", menuService.findMenuGroups());
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

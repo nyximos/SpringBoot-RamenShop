@@ -55,6 +55,12 @@ public class SalesWebController {
 		System.out.println(fromdate);
 		System.out.println(todate);
 		
+		//정확한 날짜계산을 위해 todate에 하루를 더해서 검색
+		String newtodate = todate.replace("-","");
+		int newinttodate = Integer.parseInt(newtodate);
+		newinttodate+=1;
+		todate = Integer.toString(newinttodate);
+		
 		model.addAttribute("menus", menuService.findMenus());
 		if(menu.equals("전체")) {
 			model.addAttribute("sales", orderMenuRepository.selectAllSQL(fromdate,todate));
