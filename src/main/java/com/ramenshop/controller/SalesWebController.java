@@ -22,6 +22,7 @@ public class SalesWebController {
 	@Autowired
 	MenuService menuService;
 	
+	//전체기간 통계 조회
 	@GetMapping("/admin/sales")
 	public String sales(
 			Model model
@@ -44,6 +45,7 @@ public class SalesWebController {
 		return "sales";
 	}
 	
+	//기간,메뉴 선택하여 통계 조회
 	@PostMapping("/admin/sales")
 	public String selectedSales(
 			Model model,
@@ -54,6 +56,12 @@ public class SalesWebController {
 		System.out.println(menu);
 		System.out.println(fromdate);
 		System.out.println(todate);
+		
+		//정확한 날짜계산을 위해 todate에 하루를 더해서 검색
+		String newtodate = todate.replace("-","");
+		int newinttodate = Integer.parseInt(newtodate);
+		newinttodate+=1;
+		todate = Integer.toString(newinttodate);
 		
 		model.addAttribute("menus", menuService.findMenus());
 		if(menu.equals("전체")) {

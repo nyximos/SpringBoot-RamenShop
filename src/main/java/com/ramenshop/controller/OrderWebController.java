@@ -93,7 +93,7 @@ public class OrderWebController {
 					System.out.print("에러");
 				}
 				session.removeAttribute("cart");
-				return "/cart";
+				return "/pay";
 
 	
 
