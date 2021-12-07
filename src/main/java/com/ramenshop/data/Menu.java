@@ -3,6 +3,7 @@ package com.ramenshop.data;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -54,7 +55,7 @@ public class Menu {
 	@JoinColumn(name="menu_group_id")
 	private MenuGroup menuGroup;
 	
-	@OneToMany(fetch = FetchType.EAGER,mappedBy="menu")
+	@OneToMany(fetch = FetchType.EAGER,mappedBy="menu", cascade=CascadeType.ALL)
 	private List<OrderMenu> orderMenus = new ArrayList<>();
 	
 	

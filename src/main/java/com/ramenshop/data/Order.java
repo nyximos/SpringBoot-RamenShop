@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class Order {
 	@CreationTimestamp
 	private LocalDateTime ordertime;
 	
-	@OneToMany(mappedBy="order") // OrderMenu의 order에 매핑을 해준다는 뜻
+	@OneToMany(mappedBy="order", cascade=CascadeType.ALL) // OrderMenu의 order에 매핑을 해준다는 뜻
 	private List<OrderMenu> orderMenus = new ArrayList<>();
 
 	public Long getId() {
